@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
-var colors = require('colors');
+//var bcrypt = require('bcrypt-nodejs');
+//var colors = require('colors');
 var Schema = mongoose.Schema;
 
 var userSchema  = new Schema ({

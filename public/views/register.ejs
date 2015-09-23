@@ -1,0 +1,30 @@
+<% layout('layout') -%>
+<div class="container" ng-controller="authCtrl">
+  <form meta="post" ng-submit="register()">
+<div class="row row-centered" style="position: relative; witdh: 100%;">
+  <div class="col-sm-4 col-xs-0"></div>
+
+  <div class="col-sm-4 col-xs-12">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon2" ng-model="email">
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" ng-model="username">
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="password">
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Confirm" aria-describedby="sizing-addon2" ng-model="confirm">
+    </div>
+    <br>
+    <div class="input-group">
+    <button type="submit" class="btn btn-default">Sign up!</botton>
+    </div>
+<h1 data-ng-show="error">{{ error }}</h1>
+  </div>
+  <div class="col-sm-4 col-xs-0"></div>
+
+</div>
+</form>
+</div>
