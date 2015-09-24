@@ -22,7 +22,10 @@ $scope.register = function (){
       email: $scope.email,
       username: $scope.username,
       password: $scope.password
-    };
+      };
+      $http.post('/register', userData).success(function(response) {
+        console.log(response);
+      });
   }
 };
 

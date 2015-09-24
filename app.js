@@ -51,6 +51,18 @@ app.get('/register', function (req, res) {
   res.render('register.ejs');
 });
 
+app.post('/register', function (req, res) {
+  var newUser = new User({
+    "email": req.body.email,
+    "username": req.body.username,
+    "password": req.body.password,
+    "created_at": Date.now()
+  });
+   newUser.save(function(err, doc) {
+     res.send(doc);
+   });
+});
+
 app.listen(port, function() {
   console.log("Server running on 4000");
 });
