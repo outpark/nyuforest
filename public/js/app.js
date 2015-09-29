@@ -2,26 +2,30 @@
   angular.module('forest', [
     'ngRoute'
   ])
-  .config(['$routeProvider', '$httpProvider', '$locationProvider', 'NotificationProvider',
-  function ($routeProvider, $httpProvider, $locationProvider, NotificationProvider) {
+  .config(['$routeProvider', '$httpProvider', '$locationProvider',
+  function ($routeProvider, $httpProvider, $locationProvider) {
+    console.log("hello world from app.js");
     $routeProvider.
     when('/', {
-      templateUrl: 'index.ejs'
+      templateUrl: 'tpl/home.html',
+      controller: 'homeCtrl'
     }).
     when('/user', {
-      templateUrl: 'user.ejs',
+      templateUrl: 'tpl/user.html',
       controller: 'userCtrl'
     }).
     when('/register', {
-      templateUrl: 'register.ejs',
+      templateUrl: 'tpl/register.html',
       controller: 'authCtrl'
     }).
     when('/board', {
-      templateUrl: 'board.ejs'
+      templateUrl: 'tpl/board.html'
     }).
     when('/about', {
-      templateUrl: 'about.ejs'
-    });
+      templateUrl: 'tpl/about.html'
+    })
+    .otherwise({templateUrl: '/tpl/404/html'});
+    // $locationProvider.html5Mode(true);
 
 
 

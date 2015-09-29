@@ -1,19 +1,29 @@
 exports.index = function(req,res){
-	return res.render('index');
+	return res.sendFile('index.html', {root: './public/views'});
 };
 
-exports.about = function(req,res){
-	return res.render('about');
+exports.pages = function(req,res){
+	return res.sendFile(req.params.page, {root: './public/views/tpl/'});
 };
-
-exports.board = function(req, res) {
-	return res.render('board');
-};
-
-exports.register = function(req, res) {
-	return res.render('register');
-};
-
-exports.user = function(req, res) {
-	return res.render('user');
-};
+//
+// exports.home = function(req,res) {
+// 	return res.sendFile('layout.html', {root: './public/views'});
+// 	// return res.sendFile('index.html', {root: './public/views/tpl'});
+// };
+//
+// exports.about = function(req,res){
+// 	return res.sendFile('layout.html', {root: './public/views'});
+// 	// return res.sendFile('about.html', {root: './public/views/tpl'});
+// };
+//
+// exports.board = function(req, res) {
+// 	return res.render('/tbl/board.html');
+// };
+//
+// exports.register = function(req, res) {
+// 	return res.render('/tbl/register.html');
+// };
+//
+// exports.user = function(req, res) {
+// 	return res.render('/tbl/user.html');
+// };
