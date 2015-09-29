@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var engine = require('ejs-mate');
 var http = require('http');
 
-var User = require('./models/User');
+//var User = require('./models/User');
 var app = module.exports = express();
 var port = process.env.PORT || 4000;
 
@@ -16,7 +16,7 @@ app.set("view engine", 'ejs');
 app.use(express.static(path.join(__dirname +'/public')));
 app.set('views', path.join(__dirname, '/public/views'));
 
-mongoose.connect("mongodb://bamboodb:5769@ds051863.mongolab.com:51863/bamboo");
+mongoose.connect("mongodb://outpark:5769a@ds051873.mongolab.com:51873/rockandcode");
 var db = mongoose.connection;
 db.once("open", function(){
   console.log("DB running");
@@ -35,33 +35,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-
-app.get('/', function (req, res) {
-  res.render('index.ejs');
-});
-app.get('/about', function (req, res) {
-  res.render('about.ejs');
-});
-
-app.get('/board', function (req, res) {
-  res.render('board.ejs');
-});
-
-app.get('/register', function (req, res) {
-  res.render('register.ejs');
-});
-
-app.post('/register', function (req, res) {
-  var newUser = new User({
-    "email": req.body.email,
-    "username": req.body.username,
-    "password": req.body.password,
-    "created_at": Date.now()
-  });
-   newUser.save(function(err, doc) {
-     res.send(doc);
-   });
-});
+//initializing routes
+require('./app/routes/api').initApp(app);
 
 app.listen(port, function() {
   console.log("Server running on 4000");

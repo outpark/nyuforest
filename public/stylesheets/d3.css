@@ -1,0 +1,18 @@
+/* Document styling */
+body {
+
+	width: 840px;
+	margin: 0 auto 50px auto;
+
+}
+
+/* SVG styling */
+/* SVG styling */
+svg {
+	width: 840px;
+	height: 600px;
+}
+
+path, line {
+
+}

@@ -5,6 +5,25 @@ var app = angular.module('forest', []);
 app.controller('authCtrl', ['$scope', '$http', function ($scope, $http) {
 console.log("Hello World from controller");
 
+// $scope.signin = function (){
+//   if(!$scope.email){
+//     $scope.error = "Email required!";
+//   } else if(!$scope.password) {
+//     $scope.error = "Password required!";
+//   } else {
+//     console.log($scope.email);
+//     var userData = {
+//       email: $scope.email,
+//       password: $scope.password
+//       };
+//       $http.post('/signin', userData).success(function(response) {
+//         console.log(response);
+//         $scope.message = "환영합니다!";
+//       });
+//   }
+// };
+
+
 $scope.register = function (){
   if(!$scope.email){
     $scope.error = "Email required!";
@@ -25,6 +44,7 @@ $scope.register = function (){
       };
       $http.post('/register', userData).success(function(response) {
         console.log(response);
+        $scope.message = "환영합니다!";
       });
   }
 };
