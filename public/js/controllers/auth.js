@@ -2,7 +2,7 @@
 var app = angular.module('forest');
 //console.log("Hello World from controller");
 
-app.controller('authCtrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('authCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
 console.log("Hello World from controller");
 
 $http.get('/api/register').success(function(res) {
@@ -30,6 +30,7 @@ $scope.register = function (){
       $http.post('/api/register', userData).success(function(response) {
         console.log(response);
         $scope.message = "환영합니다!";
+        $location.path("/");
       });
   }
 };

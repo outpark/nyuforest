@@ -9,7 +9,7 @@
     <br>
     <div class="alert alert-success" data-ng-show="message" role="alert">{{ message }}</div>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon2" ng-model="email">
+      <input type="text" class="form-control" placeholder="username" aria-describedby="sizing-addon2" ng-model="username">
     </div>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="password">
@@ -18,10 +18,11 @@
     <div class="input-group">
     <button type="submit" class="btn btn-default">Sign In!</botton>
     </div>
-<h3 data-ng-show="error">{{ error }}</h1>
+
   </div>
   <div class="col-sm-4 col-xs-0"></div>
 
 </div>
 </form>
+<h4 data-ng-show="error">{{ error }}</h4>
 </div>

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-// var engine = require('ejs-mate');
+
 var http = require('http');
 
 //var User = require('./models/User');
@@ -13,10 +13,8 @@ var port = process.env.PORT || 4000;
 
 
 
-// app.engine('ejs', engine);
-// app.set("view engine", 'ejs');
 app.use(express.static(path.join(__dirname +'/public')));
-// app.set('views', path.join(__dirname, '/public/views'));
+
 
 mongoose.connect("mongodb://outpark:5769a@ds051873.mongolab.com:51873/rockandcode");
 var db = mongoose.connection;

@@ -31,13 +31,13 @@ exports.signin = function(req, res) {
   if(!req.body.password || !req.body.username) {
     return res.json({
 			type:false,
-			message:"invalid parameter"});
+			message:"invalid parameter3"});
   } else {
     User.findOne({username:req.body.username}, function(err, user) {
       if(err) {
         return res.json({
     			type:false,
-    			message:"invalid parameter"});
+    			message:"invalid parameter1"});
       } else if(req.body.password == user.password){
         req.user = user;
         console.log("logged in");
