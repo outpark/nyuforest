@@ -1,6 +1,9 @@
 (function() {
+
   angular.module('forest', [
-    'ngRoute'
+    'ngRoute',
+    // 'angular-sanitize',
+    'textAngular'
   ])
   .config(['$routeProvider', '$httpProvider', '$locationProvider',
   function ($routeProvider, $httpProvider, $locationProvider) {
@@ -23,6 +26,9 @@
     }).
     when('/about', {
       templateUrl: 'tpl/about.html'
+    }).
+    when('/post', {
+      templateUrl: 'tpl/post.html'
     })
     .otherwise({templateUrl: '/tpl/404/html'});
     // $locationProvider.html5Mode(true);
