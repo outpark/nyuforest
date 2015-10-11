@@ -3,7 +3,7 @@ var app = angular.module('forest');
 //console.log("Hello World from controller");
 
 app.controller('authCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-console.log("Hello World from controller");
+console.log("Hello World from auth controller");
 
 $http.get('/api/register').success(function(res) {
           $scope.obj = res;
