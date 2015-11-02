@@ -27,10 +27,15 @@ $scope.register = function (){
       username: $scope.username,
       password: $scope.password
       };
-      $http.post('/api/register', userData).success(function(response) {
-        console.log(response);
-        $scope.message = "환영합니다!";
-        $location.path("/");
+      $http.post('/api/register', userData).success(function(res) {
+        console.log(res);
+        if (res.type === false){
+          $scope.error = res.message;
+        }else{
+          $scope.message = "환영합니다!";
+          $location.path("/");
+        }
+
       });
   }
 };

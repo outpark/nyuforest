@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var jwt = require('jsonwebtoken');
 
 
 String.prototype.isAlphaNumeric = function() {
@@ -13,36 +14,87 @@ exports.signup = function(req, res) {
 			message:"invalid parameter"
 		});
 	} else{
+    User.findOne({username: req.body.username}, function(err, user) {
+      if (err) {
+        res.json({
+               type: false,
+               message: "Error occured: " + err
+           });
+      }else{
+        if (user) {
+              res.json({
+                  type: false,
+                  message: "User already exists!"
+              });
+            }else{
+                    var user = new User({
+                          "email": req.body.email,
+                          "username": req.body.username,
+                          "password": req.body.password,
+                          "created_at": Date.now()
+                      });
 
-    var newUser = new User({
-        "email": req.body.email,
-        "username": req.body.username,
-        "password": req.body.password,
-        "created_at": Date.now()
-      });
+                        user.save(function(err, user) {
+                          if(err){
+                    					console.log(err);
+                    					return res.json({
+                    						type:false,
+                    						message:"error!"
+                    					});
+                    				}else {
+                            user.token = jwt.sign(user.email+Date.now(), "tokengenerated");
+                            user.save(function(err, user1) {
+                              if(err){
+                        					console.log(err);
+                        					return res.json({
+                        						type:false,
+                        						message:"error!!!"
+                        					});
+                        				}
+                                return res.json({
+                                    type: true,
+                                    username:user1.username,
+						                        token:user1.token
+                                });
+                            });}
 
-      newUser.save(function(err, doc) {
-       res.send(doc);
-     });
+                            //  res.send(doc);
+                     });
+                   }
+      }
+
+    });
   }
+
 };
 
 exports.signin = function(req, res) {
   if(!req.body.password || !req.body.username) {
     return res.json({
 			type:false,
-			message:"invalid parameter3"});
+			message:"invalid parameter1"});
   } else {
-    User.findOne({username:req.body.username}, function(err, user) {
+    User.findOne({username:req.body.username, password: req.body.password}, function(err, user) {
       if(err) {
+        console.log(err);
         return res.json({
     			type:false,
-    			message:"invalid parameter1"});
-      } else if(req.body.password == user.password){
-        req.user = user;
-        console.log("logged in");
-        return res.send(user._id);
-
+    			message:"invalid parameter2"});
+      } else {
+        if(req.body.username === null){
+          return res.json({
+      			type:false,
+      			message:"Wrong Password/Username"});
+        } else if(req.body.password === user.password){
+          req.user = user;
+          console.log("logged in");
+          return res.send(user._id);
+        } else {
+          res.json({
+                    type: false,
+                    data: "Incorrect username/password"
+                });
+        }
       }
     });
 

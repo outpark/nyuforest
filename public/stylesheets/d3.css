@@ -1,14 +1,10 @@
-/* Document styling */
-body {
 
-	width: 840px;
-	margin: 0 auto 50px auto;
 
-}
-
-/* SVG styling */
 /* SVG styling */
 svg {
+	margin-left: 150px;
+	/* To be fixed */
+
 	width: 840px;
 	height: 600px;
 }

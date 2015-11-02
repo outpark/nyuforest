@@ -22,7 +22,7 @@ var app = angular.module('forest');
             if (res.type === false){
               $scope.error = "등록되지 않은 유저이거나 비밀번호가 틀렸네요.";
 
-            } else {
+            } else if (res.type !== false){
               $scope.message = "환영합니다!";
               $location.path("/");
             }

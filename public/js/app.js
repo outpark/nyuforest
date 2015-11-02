@@ -28,7 +28,8 @@
       templateUrl: 'tpl/about.html'
     }).
     when('/post', {
-      templateUrl: 'tpl/post.html'
+      templateUrl: 'tpl/post.html',
+      controller: 'editorCtrl'
     })
     .otherwise({templateUrl: '/tpl/404/html'});
     // $locationProvider.html5Mode(true);
