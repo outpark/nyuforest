@@ -13,7 +13,7 @@
       templateUrl: 'tpl/home.html',
       controller: 'homeCtrl'
     }).
-    when('/user', {
+    when('/users', {
       templateUrl: 'tpl/user.html',
       controller: 'userCtrl'
     }).

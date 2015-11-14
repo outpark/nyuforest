@@ -27,7 +27,7 @@ $scope.register = function (){
       username: $scope.username,
       password: $scope.password
       };
-      $http.post('/api/register', userData).success(function(res) {
+      $http.post('/api/users/signup', userData).success(function(res) {
         console.log(res);
         if (res.type === false){
           $scope.error = res.message;

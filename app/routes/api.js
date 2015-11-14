@@ -9,10 +9,13 @@ exports.initApp = function(app){
 
 
 
-  app.route('/api/user')
+  app.route('/api/users/signin')
   .post(user_ctrl.signin);
 
-  app.route('/api/register')
+  app.route('/api/users/me')
+  .get(user_ctrl.me);
+
+  app.route('/api/users/signup')
   .post(user_ctrl.signup);
 
   //

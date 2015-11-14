@@ -27,14 +27,14 @@ exports.signup = function(req, res) {
                   message: "User already exists!"
               });
             }else{
-                    var user = new User({
+                    var newUser = new User({
                           "email": req.body.email,
                           "username": req.body.username,
                           "password": req.body.password,
                           "created_at": Date.now()
                       });
 
-                        user.save(function(err, user) {
+                        newUser.save(function(err, user) {
                           if(err){
                     					console.log(err);
                     					return res.json({
@@ -75,29 +75,77 @@ exports.signin = function(req, res) {
 			message:"invalid parameter1"});
   } else {
     User.findOne({username:req.body.username, password: req.body.password}, function(err, user) {
-      if(err) {
-        console.log(err);
-        return res.json({
-    			type:false,
-    			message:"invalid parameter2"});
-      } else {
-        if(req.body.username === null){
-          return res.json({
-      			type:false,
-      			message:"Wrong Password/Username"});
-        } else if(req.body.password === user.password){
-          req.user = user;
-          console.log("logged in");
-          return res.send(user._id);
+        if (err) {
+            res.json({
+                type: false,
+                data: "Error occured: " + err
+            });
         } else {
-          res.json({
-                    type: false,
-                    data: "Incorrect username/password"
+            if (user) {
+               res.json({
+                    type: true,
+                    data: user.username,
+                    token: user.token
                 });
+            } else {
+                res.json({
+                    type: false,
+                    data: "Incorrect username or password"
+                });
+            }
         }
-      }
     });
-
+    // User.findOne({username:req.body.username, password: req.body.password}, function(err, user) {
+    //   if(err) {
+    //     console.log(err);
+    //     return res.json({
+    // 			type:false,
+    // 			message:"invalid parameter2"});
+    //   } else {
+    //     if(req.body.username === null){
+    //       return res.json({
+    //   			type:false,
+    //   			message:"Wrong Password/Username"});
+    //     } else if(req.body.password === user.password){
+    //       req.user = user;
+    //       console.log("logged in");
+    //       return res.send(user._id);
+    //     } else {
+    //       res.json({
+    //                 type: false,
+    //                 data: "Incorrect username/password"
+    //             });
+    //     }
+    //   }
+    // });
   }
-
 };
+
+exports.me = function(req, res) {
+  User.findOne({token: req.token}, function(err, user) {
+        if (err) {
+            res.json({
+                type: false,
+                data: "Error occured: " + err
+            });
+        } else {
+            res.json({
+                type: true,
+                data: user
+            });
+        }
+    });
+};
+
+function ensureAuthorized(req, res, next) {
+    var bearerToken;
+    var bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== 'undefined') {
+        var bearer = bearerHeader.split(" ");
+        bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.send(403);
+    }
+}

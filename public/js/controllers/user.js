@@ -3,7 +3,7 @@ var app = angular.module('forest');
 //console.log("Hello World from controller");
 
   app.controller('userCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-    console.log("Hello World from controller");
+    // console.log("Hello World from controller");
 
     $scope.signin = function (){
       if(!$scope.username){
@@ -16,18 +16,18 @@ var app = angular.module('forest');
           username: $scope.username,
           password: $scope.password
           };
-          $http.post('/api/user', userData).success(function(res) {
+          $http.post('/api/users/signin', userData).success(function(res) {
             console.log(res);
-
+            console.log("Logging in");
             if (res.type === false){
               $scope.error = "등록되지 않은 유저이거나 비밀번호가 틀렸네요.";
-
-            } else if (res.type !== false){
+              console.log(res.data);
+            } else if (res.type === true){
+              console.log("Logged in");
+              $location.path("/board");
               $scope.message = "환영합니다!";
-              $location.path("/");
+
             }
-
-
           });
       }
     };
