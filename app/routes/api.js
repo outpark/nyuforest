@@ -1,10 +1,11 @@
 var core_ctrl = require('../controllers/core_ctrl'),
-  user_ctrl = require('../controllers/user_ctrl');
+  user_ctrl = require('../controllers/user_ctrl'),
+  ensureAuthorized =  require('../controllers/user_ctrl').ensureAuthorized;
 
 exports.initApp = function(app){
 
 
-  app.route('/tpl/:page')
+  app.route('/partials/:page')
     .get(core_ctrl.pages);
 
 
@@ -13,7 +14,7 @@ exports.initApp = function(app){
   .post(user_ctrl.signin);
 
   app.route('/api/users/me')
-  .get(user_ctrl.me);
+  .get(ensureAuthorized, user_ctrl.me);
 
   app.route('/api/users/signup')
   .post(user_ctrl.signup);

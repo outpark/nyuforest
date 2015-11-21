@@ -10,28 +10,28 @@
     console.log("hello world from app.js");
     $routeProvider.
     when('/', {
-      templateUrl: 'tpl/home.html',
+      templateUrl: '../views/partials/home.html',
       controller: 'homeCtrl'
     }).
     when('/users', {
-      templateUrl: 'tpl/user.html',
+      templateUrl: '../views/partials/user.html',
       controller: 'userCtrl'
     }).
     when('/register', {
-      templateUrl: 'tpl/register.html',
+      templateUrl: '../views/partials/register.html',
       controller: 'authCtrl'
     }).
     when('/board', {
-      templateUrl: 'tpl/board.html'
+      templateUrl: '../views/partials/board.html'
     }).
     when('/about', {
-      templateUrl: 'tpl/about.html'
+      templateUrl: '../views/partials/about.html'
     }).
     when('/post', {
-      templateUrl: 'tpl/post.html',
+      templateUrl: '../views/partials/post.html',
       controller: 'editorCtrl'
     })
-    .otherwise({templateUrl: '/tpl/404/html'});
+    .otherwise({templateUrl: '../views/partials/404/html'});
     // $locationProvider.html5Mode(true);
 
 
