@@ -14,21 +14,11 @@
     <title>nyuforest</title>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
       <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="/js/angular/angular.js"></script>
-      <script type="text/javascript" src="/js/angular/angular.route.js"></script>
-      <script type="text/javascript" src='/js/angular/textAngular-rangy.min.js'></script>
-      <script type="text/javascript" src='/js/angular/textAngular-sanitize.min.js'></script>
-      <script type="text/javascript" src='/js/angular/textAngular.min.js'></script>
-      <script type="text/javascript" src="/js/app.js"></script>
-      <script type="text/javascript" src="/js/controllers/auth.js"></script>
-      <script type="text/javascript" src="/js/controllers/user.js"></script>
-      <script type="text/javascript" src="/js/controllers/home.js"></script>
-      <script type="text/javascript" src="/js/controllers/editor.js"></script>
 
 
   </head>
   <body data-twttr-rendered="true">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" ng-controller="userCtrl">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -70,7 +60,18 @@
 
     </body>
 
-
+    <script type="text/javascript" src="/js/angular/angular.js"></script>
+    <script type="text/javascript" src="/js/angular/angular.route.js"></script>
+    <script type="text/javascript" src='/js/angular/textAngular-rangy.min.js'></script>
+    <script type="text/javascript" src='/js/angular/textAngular-sanitize.min.js'></script>
+    <script type="text/javascript" src='/js/angular/textAngular.min.js'></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/controllers/auth.js"></script>
+    <script type="text/javascript" src="/js/controllers/user.js"></script>
+    <script type="text/javascript" src="/js/controllers/home.js"></script>
+    <script type="text/javascript" src="/js/controllers/editor.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script type="text/javascript" src="/js/services/auth.js"></script>
 
 
 

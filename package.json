@@ -9,6 +9,7 @@
   "author": "outpark",
   "license": "ISC",
   "dependencies": {
+    "async": "^1.5.0",
     "body-parser": "^1.14.0",
     "ejs-mate": "^2.3.0",
     "jsonwebtoken": "^5.4.0",

@@ -1,10 +1,12 @@
 
 var express = require('express');
 var path = require('path');
+var favicon = require('serve-favicon');
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var async = require('async');
 
 var http = require('http');
 
@@ -15,6 +17,7 @@ var port = process.env.PORT || 5000;
 
 
 app.use(express.static(path.join(__dirname +'/public')));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 
 mongoose.connect("mongodb://outpark:5769a@ds051873.mongolab.com:51873/rockandcode");
@@ -35,6 +38,8 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     next();
 });
+
+
 
 //initializing routes
 require('./app/routes/api').initApp(app);

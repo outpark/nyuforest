@@ -129,9 +129,14 @@ exports.me = function(req, res) {
                 data: "Error occured: " + err
             });
         } else {
+          console.log(user);
             res.json({
                 type: true,
-                data: user
+                data:{
+                    username: user.username,
+                    email: user.email,
+                    token: user.token
+                }
             });
         }
     });
@@ -139,7 +144,7 @@ exports.me = function(req, res) {
 
 exports.ensureAuthorized = function (req, res, next) {
     var bearerToken;
-    var bearerHeader = req.headers["authorization"];
+    var bearerHeader = req.get('Authorization');
     if (typeof bearerHeader !== 'undefined') {
         var bearer = bearerHeader.split(" ");
         bearerToken = bearer[1];
