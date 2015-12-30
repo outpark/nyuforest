@@ -1,11 +1,16 @@
 
-<div class="list-group" style="position: relative; margin: 20px;">
+<div class="list-group" style="position: relative; margin: 20px;" ng-controller="boardCtrl">
 
   <a href="#" class="list-group-item active">
-    <span class="badge">14</span>Sample Post
+    <span class="badge">14</span>
+    Sample Post
   </a>
-  <a href="#" class="list-group-item">Soon</a>
-  <a href="#" class="list-group-item">to</a>
+  <a ng-href="/post/{{post._id}}" class="list-group-item" ng-repeat="post in posts">
+    {{ post.title }}
+  </a>
+
+
+  <!-- <a href="#" class="list-group-item">to</a>
   <a href="#" class="list-group-item">be</a>
-  <a href="#" class="list-group-item">updated!</a>
+  <a href="#" class="list-group-item">updated!</a> -->
 </div>

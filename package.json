@@ -13,7 +13,7 @@
     "body-parser": "^1.14.0",
     "ejs-mate": "^2.3.0",
     "jsonwebtoken": "^5.4.0",
-    "mongoose": "^4.1.8",
+    "mongoose": "~4.2.7",
     "morgan": "^1.6.1",
     "textangular": "^1.4.6"
   }

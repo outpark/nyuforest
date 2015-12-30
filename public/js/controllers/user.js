@@ -5,6 +5,24 @@ var app = angular.module('forest');
   app.controller('userCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', 'Auth', function ($scope, $http, $location, $rootScope, $localStorage, Auth) {
     // console.log("Hello World from controller");
 
+    if($localStorage.token){
+      Auth.me(function(res) {
+        if(res.type === true){
+          console.log(res.data);
+          if(res.data.username){
+            $rootScope.auth={
+              username:res.data.username,
+              email:res.data.email,
+              token:res.data.token
+            };
+          } else {
+            Auth.logout();
+          }
+        } else if(res.type === false){
+          console.log(res.data);
+        }
+      });
+    }
     $scope.signin = function (){
       if(!$scope.username){
         $scope.error = "Username required!";
@@ -33,21 +51,9 @@ var app = angular.module('forest');
       }
     };
 
-    (function(){
-      Auth.me(function(res) {
-        if(res.type === true){
-          if(res.data.username){
-            $rootScope.auth={
-              username:res.data.username,
-              email:res.data.email,
-              token:res.data.token
-            };
-          } else {
-            Auth.logout();
-          }
-        }
-      });
-    })();
+    // (function(){
+
+    // })();
   }]);
 
 })();

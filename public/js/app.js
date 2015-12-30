@@ -32,7 +32,7 @@
       templateUrl: '../views/partials/post.html',
       controller: 'editorCtrl'
     })
-    .otherwise({templateUrl: '../views/partials/404/html'});
+    .otherwise({templateUrl: '../views/partials/404.html'});
     // $locationProvider.html5Mode(true);
 
     $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
