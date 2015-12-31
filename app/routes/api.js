@@ -1,7 +1,9 @@
+
+
 var core_ctrl = require('../controllers/core_ctrl'),
   user_ctrl = require('../controllers/user_ctrl'),
   post_ctrl = require('../controllers/post_ctrl'),
-  ensureAuthorized =  require('../controllers/user_ctrl').ensureAuthorized;
+  ensureAuthorized = require('../controllers/user_ctrl').ensureAuthorized;
 
 exports.initApp = function(app){
 
@@ -22,7 +24,8 @@ exports.initApp = function(app){
 
   app.route('/api/posts')
   .get(post_ctrl.find)
-  .post(post_ctrl.create);
+  .post(ensureAuthorized, post_ctrl.create);
+
 
   app.route('/api/posts/:id')
   .get(post_ctrl.list)

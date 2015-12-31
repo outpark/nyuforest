@@ -1,11 +1,12 @@
 <div ng-controller="editorCtrl" >
-  <form meta="post" ng-submit="signin()">
+  <form meta="post" ng-submit="submit()">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Title</span>
-      <input type="text" class="form-control" placeholder="The title goes here" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="The title goes here"
+      ng-model="title" aria-describedby="basic-addon1">
     </div>
     <br>
-      <text-angular ng-model="htmlcontent"></text-angular>
+      <text-angular ng-model="body"></text-angular>
       <button type="submit" class="btn btn-default">Post!</botton>
   </form>
 </div>

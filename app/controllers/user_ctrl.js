@@ -149,7 +149,16 @@ exports.ensureAuthorized = function (req, res, next) {
         var bearer = bearerHeader.split(" ");
         bearerToken = bearer[1];
         req.token = bearerToken;
-        next();
+        User.findOne({token:bearerToken}, function(err, user){
+          if(err) {
+            res.send(403);
+          } else if(user) {
+            req.user = user;
+  					next();
+          } else {
+            res.send(403);
+          }
+        });
     } else {
         res.send(403);
     }

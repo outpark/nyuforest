@@ -8,6 +8,7 @@ var postSchema  = new Schema ({
   body: {type:String, required:true},
   created_at:{type:Date, default:Date.now},
   updated_at: Date,
+  likes:{type:Number, default:0},
   author: {type:Schema.ObjectId}
 });
 

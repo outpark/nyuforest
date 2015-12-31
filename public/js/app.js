@@ -23,15 +23,20 @@
       controller: 'authCtrl'
     }).
     when('/board', {
-      templateUrl: '../views/partials/board.html'
+      templateUrl: '../views/partials/board.html',
+      controller: 'boardCtrl'
     }).
     when('/about', {
       templateUrl: '../views/partials/about.html'
     }).
-    when('/post', {
-      templateUrl: '../views/partials/post.html',
+    when('/write', {
+      templateUrl: '../views/partials/write.html',
       controller: 'editorCtrl'
-    })
+    }).
+    when('/post/:post_id',{
+				templateUrl: '../views/partials/read.html',
+				controller: 'readCtrl'
+		})
     .otherwise({templateUrl: '../views/partials/404.html'});
     // $locationProvider.html5Mode(true);
 

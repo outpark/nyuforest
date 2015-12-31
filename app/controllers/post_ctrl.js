@@ -1,5 +1,7 @@
+
 var Post = require('../models/post');
 var jwt = require('jsonwebtoken');
+var User = require('../models/user');
 
 exports.find = function(req, res) {
   Post.find({}).sort('-created_at').exec(function(err, posts) {
@@ -13,13 +15,39 @@ exports.find = function(req, res) {
 };
 
 exports.create = function(req, res){
-  Post.create(req.body.post, function (err, post) {
-    if (err) {
-      return res.json({success:false, message:err});
-    } else {
-      res.json({success:true, data:post});
-    }
-  });
+  console.log("request recieved");
+  if(!req.body.title || !req.body.body){
+    res.json({
+      type: false,
+      message: "Invalid parameters"
+    });
+  }else {
+    var post = new Post({
+      title: req.body.title,
+      body: req.body.body,
+      author: req.user.username
+    });
+    console.log(req.user.username);
+    console.log("post created");
+    Post.create(post, function(err, post) {
+      if (err) {
+        return res.json({success:false, message:err});
+      } else {
+        console.log("post is saved");
+        res.json({success:true, data:post});
+      }
+    });
+  }
+
+
+
+  // Post.create(req.body.post, function (err, post) {
+  //   if (err) {
+  //     return res.json({success:false, message:err});
+  //   } else {
+  //     res.json({success:true, data:post});
+  //   }
+  // });
 };
 
 exports.list = function(req, res) {
