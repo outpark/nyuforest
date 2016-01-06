@@ -1,11 +1,11 @@
 
 
 <div class="panel panel-default" ng-controller="readCtrl">
-  <div class="panel-heading">{{post.title}}
+  <div class="panel-heading"><h4>{{post.title}}</h4> /
     <a ng-href="/#user/{{post.author}}">{{post.author}}</a>
   </div>
-    <div class="panel-body">
-      <p>{{post.body}}</p>
+    <div class="panel-body" ng-bind-html="post.body">
+    <!-- {{post.body}} -->
     </div>
 
 </div>

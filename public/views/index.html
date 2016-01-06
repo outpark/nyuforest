@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="../stylesheets/d3.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/home.css">
     <link rel='stylesheet' type="text/css" href='../stylesheets/textAngular.css'>
     <link rel="stylesheet" type="text/css" href="../stylesheets/adjusted_style.css">
 
@@ -39,9 +40,11 @@
             <li><a href="/#write">Write</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/#users">Sign In</a></li>
-            <li><a href="/#register">Register</a></li>
-            <li class="dropdown">
+            <li><a href="/#users" data-ng-hide="auth">Sign In</a></li>
+            <li><a href="/#register" data-ng-hide="auth">Register</a></li>
+            <li><a href="/#user/{{signin.user_id}}" data-ng-show="auth">{{auth.username}}</a></li>
+            <li><a href="/#/" data-ng-show="auth" ng-click="signout()">Logout</a></li>
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
@@ -50,7 +53,7 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Separated link</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

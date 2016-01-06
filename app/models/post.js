@@ -9,7 +9,8 @@ var postSchema  = new Schema ({
   created_at:{type:Date, default:Date.now},
   updated_at: Date,
   likes:{type:Number, default:0},
-  author: {type:Schema.ObjectId}
+  author: {type:String, required:true},
+  category: {type:String, required:true}
 });
 
 

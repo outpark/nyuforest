@@ -82,9 +82,10 @@ exports.signin = function(req, res) {
             });
         } else {
             if (user) {
+              console.log(user.username);
                res.json({
                     type: true,
-                    data: user.username,
+                    username: user.username,
                     token: user.token
                 });
             } else {

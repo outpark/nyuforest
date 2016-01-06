@@ -2,7 +2,7 @@
 var app = angular.module('forest');
 //console.log("Hello World from controller");
 
-  app.controller('userCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', 'Auth', function ($scope, $http, $location, $rootScope, $localStorage, Auth) {
+  app.controller('userCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', '$route','Auth', function ($scope, $http, $location, $rootScope, $localStorage, $route, Auth) {
     // console.log("Hello World from controller");
 
     if($localStorage.token){
@@ -41,14 +41,26 @@ var app = angular.module('forest');
             }else if(success.data.type === false){
               $scope.error = "등록되지 않은 유저이거나 비밀번호가 틀렸네요.";
             }else if(success.data.type === true){
-            console.log("Logged in");
+            console.log("A user logged in");
             console.log("CONTROLLER says: ", success.data);
             $localStorage.token = success.data.token;
             $scope.message = "환영합니다!";
+            $rootScope.auth = {
+              username: success.data.username
+            };
+            console.log(success.data.username);
             $location.path("/board");
+
             }
           });
       }
+    };
+
+    $scope.signout = function(){
+      console.log("Signout!");
+      Auth.logout();
+      $rootScope.auth = null;
+
     };
 
     // (function(){

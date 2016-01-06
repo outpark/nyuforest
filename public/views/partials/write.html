@@ -1,5 +1,14 @@
+<section class="form-wrapper">
 <div ng-controller="editorCtrl" >
   <form meta="post" ng-submit="submit()">
+    <select class="form-control" ng-model="category">
+      <option>잡담 게시판</option>
+      <option>사람을 구해요 게시판</option>
+      <option>사고 팔아요 게시판</option>
+      <option>정보 공유 게시판</option>
+      <option>운영자/개발자에게 게시판</option>
+    </select>
+    <br>
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Title</span>
       <input type="text" class="form-control" placeholder="The title goes here"
@@ -10,3 +19,4 @@
       <button type="submit" class="btn btn-default">Post!</botton>
   </form>
 </div>
+<section>

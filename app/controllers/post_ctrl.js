@@ -4,18 +4,24 @@ var jwt = require('jsonwebtoken');
 var User = require('../models/user');
 
 exports.find = function(req, res) {
-  Post.find({}).sort('-created_at').exec(function(err, posts) {
-    if(err){
-      return res.json({success:false, message:err});
-    } else {
-      res.json({success:true, data:posts});
-    }
-  });
-
+  var conditions = {};
+  if(req.path.indexOf("/api/posts") > -1) {
+    conditions = conditions;
+  } else if(req.path.indexOf("/api/board") > -1){
+    conditions = {category:req.params.category};
+  }
+      Post.find(conditions)
+      .sort('-created_at')
+      .exec(function(err, posts) {
+        if(err){
+          return res.json({success:false, message:err});
+        } else {
+          res.json({success:true, data:posts});
+        }
+      });
 };
 
 exports.create = function(req, res){
-  console.log("request recieved");
   if(!req.body.title || !req.body.body){
     res.json({
       type: false,
@@ -25,15 +31,13 @@ exports.create = function(req, res){
     var post = new Post({
       title: req.body.title,
       body: req.body.body,
+      category: req.body.category,
       author: req.user.username
     });
-    console.log(req.user.username);
-    console.log("post created");
     Post.create(post, function(err, post) {
       if (err) {
         return res.json({success:false, message:err});
       } else {
-        console.log("post is saved");
         res.json({success:true, data:post});
       }
     });

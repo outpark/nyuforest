@@ -1,0 +1,185 @@
+/*.bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  z-index: 0;
+  background-color: #ffe4c7;
+}*/
+
+.layer {
+  position: fixed;
+  top: 0px;
+  margin: auto;
+  width: 100%;
+  z-index: 100;
+  min-height: 400px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.parallax {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-perspective: 1px;
+          perspective: 1px;
+}
+
+.parallax-group {
+  position: relative;
+  height: 100vh;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.parallax-group div:nth-child(1) {
+  background-color: #ffe4c7;
+  margin-top: 600px;
+  background-color: #d9d1b8;
+  -webkit-transform: translateZ(-12px) scale(13);
+          transform: translateZ(-12px) scale(13);
+}
+.parallax-group div:nth-child(1):before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-image: -webkit-linear-gradient(315deg, transparent 66%, #d9d1b8 66.01%), -webkit-linear-gradient(45deg, #d9d1b8 34%, transparent 34.01%);
+  background-image: linear-gradient(135deg, transparent 66%, #d9d1b8 66.01%), linear-gradient(45deg, #d9d1b8 34%, transparent 34.01%);
+  background-position: 163px 0px;
+  background-size: 200px 100%;
+  background-repeat: repeat-x;
+}
+
+.parallax-group div:nth-child(2) {
+  background-color: #ffe4c7;
+  margin-top: 900px;
+  background-color: #b3beaa;
+  -webkit-transform: translateZ(-10px) scale(11);
+          transform: translateZ(-10px) scale(11);
+}
+.parallax-group div:nth-child(2):before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-image: -webkit-linear-gradient(315deg, transparent 66%, #b3beaa 66.01%), -webkit-linear-gradient(45deg, #b3beaa 34%, transparent 34.01%);
+  background-image: linear-gradient(135deg, transparent 66%, #b3beaa 66.01%), linear-gradient(45deg, #b3beaa 34%, transparent 34.01%);
+  background-position: 287px 0px;
+  background-size: 200px 100%;
+  background-repeat: repeat-x;
+}
+
+.parallax-group div:nth-child(3) {
+  background-color: #ffe4c7;
+  margin-top: 1200px;
+  background-color: #8cab9b;
+  -webkit-transform: translateZ(-8px) scale(9);
+          transform: translateZ(-8px) scale(9);
+}
+.parallax-group div:nth-child(3):before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-image: -webkit-linear-gradient(315deg, transparent 66%, #8cab9b 66.01%), -webkit-linear-gradient(45deg, #8cab9b 34%, transparent 34.01%);
+  background-image: linear-gradient(135deg, transparent 66%, #8cab9b 66.01%), linear-gradient(45deg, #8cab9b 34%, transparent 34.01%);
+  background-position: 11px 0px;
+  background-size: 200px 100%;
+  background-repeat: repeat-x;
+}
+
+.parallax-group div:nth-child(4) {
+  background-color: #ffe4c7;
+  margin-top: 1500px;
+  background-color: #66988d;
+  -webkit-transform: translateZ(-6px) scale(7);
+          transform: translateZ(-6px) scale(7);
+}
+.parallax-group div:nth-child(4):before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-image: -webkit-linear-gradient(315deg, transparent 66%, #66988d 66.01%), -webkit-linear-gradient(45deg, #66988d 34%, transparent 34.01%);
+  background-image: linear-gradient(135deg, transparent 66%, #66988d 66.01%), linear-gradient(45deg, #66988d 34%, transparent 34.01%);
+  background-position: 221px 0px;
+  background-size: 200px 100%;
+  background-repeat: repeat-x;
+}
+
+.parallax-group div:nth-child(5) {
+  background-color: #ffe4c7;
+  margin-top: 1800px;
+  background-color: #40867e;
+  -webkit-transform: translateZ(-4px) scale(5);
+          transform: translateZ(-4px) scale(5);
+}
+.parallax-group div:nth-child(5):before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-image: -webkit-linear-gradient(315deg, transparent 66%, #40867e 66.01%), -webkit-linear-gradient(45deg, #40867e 34%, transparent 34.01%);
+  background-image: linear-gradient(135deg, transparent 66%, #40867e 66.01%), linear-gradient(45deg, #40867e 34%, transparent 34.01%);
+  background-position: 228px 0px;
+  background-size: 200px 100%;
+  background-repeat: repeat-x;
+}
+
+.parallax-group div:nth-child(6) {
+  background-color: #ffe4c7;
+  margin-top: 2100px;
+  background-color: #1a7370;
+  -webkit-transform: translateZ(-2px) scale(3);
+          transform: translateZ(-2px) scale(3);
+}
+.parallax-group div:nth-child(6):before {
+  content: "";
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-image: -webkit-linear-gradient(315deg, transparent 66%, #1a7370 66.01%), -webkit-linear-gradient(45deg, #1a7370 34%, transparent 34.01%);
+  background-image: linear-gradient(135deg, transparent 66%, #1a7370 66.01%), linear-gradient(45deg, #1a7370 34%, transparent 34.01%);
+  background-position: 246px 0px;
+  background-size: 200px 100%;
+  background-repeat: repeat-x;
+}
+
+.content {
+  position: relative;
+  background-color: transparent;
+  font-family: "Arial";
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  line-height: 40px;
+  z-index: 10;
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  margin-top: 1000px;
+  -webkit-transform: translateZ(-2px) scale(3);
+          transform: translateZ(-2px) scale(3);
+}
+
+.fill {
+  height: 80%;
+}

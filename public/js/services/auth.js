@@ -1,7 +1,7 @@
 (function() {
   var app = angular.module('forest');
 
-  app.factory('Auth', ['$http', '$localStorage', '$rootScope', '$location', function($http, $localStorage, $rootScope, $location){
+  app.factory('Auth', ['$http', '$localStorage', '$rootScope', '$location',  function($http, $localStorage, $rootScope, $location){
         var baseUrl = "/api/";
         function changeUser(user) {
             angular.extend(currentUser, user);
@@ -47,7 +47,9 @@
                 $http.get('/api/users/me').then(success, error);
             },
             logout: function(success) {
-                changeUser({});
+                // changeUser({});
+                console.log("logout requested");
+                delete $rootScope.auth;
                 delete $localStorage.token;
                 $location.path("/");
                 // success();

@@ -26,6 +26,8 @@ exports.initApp = function(app){
   .get(post_ctrl.find)
   .post(ensureAuthorized, post_ctrl.create);
 
+  app.route('/api/board/:category')
+  .get(post_ctrl.find);
 
   app.route('/api/posts/:id')
   .get(post_ctrl.list)

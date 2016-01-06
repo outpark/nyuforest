@@ -2552,9 +2552,12 @@ output {
   line-height: 1.846;
   color: #666666;
 }
+.form-wrapper{
+  margin: 20px;
+}
 .form-control {
   display: block;
-  width: 100%;
+  width: 70% !important;
   height: 37px;
   padding: 6px 16px;
   font-size: 13px;
@@ -5295,10 +5298,19 @@ a.thumbnail.active {
   margin-bottom: 20px;
   padding-left: 0;
 }
+.list-group.left{
+  float: left;
+  width: 15%;
+  margin-left: 10px;
+}.list-group.right {
+  float: right;
+  width: 82%;
+  margin-right: 10px;
+}
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 10px 15px !important;
   margin-bottom: -1px;
   background-color: #ffffff;
   border: 1px solid #dddddd;

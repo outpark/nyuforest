@@ -26,6 +26,10 @@
       templateUrl: '../views/partials/board.html',
       controller: 'boardCtrl'
     }).
+    when('/board/:category', {
+      templateUrl: '../views/partials/board.html',
+      controller: 'categoryCtrl'
+    }).
     when('/about', {
       templateUrl: '../views/partials/about.html'
     }).

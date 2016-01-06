@@ -8,6 +8,10 @@ $http.get('/api/register').success(function(res) {
           $scope.obj = res;
       });
 
+
+
+
+
 $scope.register = function (){
   if(!$scope.email){
     $scope.error = "Email required!";
@@ -37,6 +41,9 @@ $scope.register = function (){
         else if (success.data.type === true){
         console.log("CONTROLLER says: ", success.data);
         $localStorage.token = success.data.token;
+        $rootScope.auth = {
+          username: success.data.username
+        };
         $location.path("/");
         }
 
