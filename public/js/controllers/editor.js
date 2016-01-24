@@ -38,11 +38,11 @@ $scope.submit = function() {
     }
     var data = {
       "title" : $scope.title,
-      "body" : $scope.body,
+      "content" : $scope.body,
       "category": $scope.category
     };
     $http.post('/api/posts', data).success(function(res){
-      if(res.type === false){
+      if(res.success === false){
         console.error(res.message);
         console.log("Something went wrong");
       }else {

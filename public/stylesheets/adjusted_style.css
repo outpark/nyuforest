@@ -1,0 +1,15 @@
+.list-group.left{
+  float: left;
+  width: 15%;
+  margin-left: 10px;
+}
+.list-group.right {
+  float: right;
+  width: 82%;
+  margin-right: 10px;
+}
+.panel.panel-default.right {
+  float: right;
+  width: 82%;
+  margin-right: 10px;
+}

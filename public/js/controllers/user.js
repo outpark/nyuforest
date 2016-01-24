@@ -3,22 +3,24 @@ var app = angular.module('forest');
 //console.log("Hello World from controller");
 
   app.controller('userCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', '$route','Auth', function ($scope, $http, $location, $rootScope, $localStorage, $route, Auth) {
-    // console.log("Hello World from controller");
+    console.log("Hello World from usercontroller");
 
     if($localStorage.token){
+      console.log("going to auth");
       Auth.me(function(res) {
-        if(res.type === true){
-          console.log(res.data);
-          if(res.data.username){
+        if(res.data.type === true){
+          if(res.data.data.username){
             $rootScope.auth={
-              username:res.data.username,
-              email:res.data.email,
-              token:res.data.token
+              username:res.data.data.username,
+              email:res.data.data.email,
+              token:res.data.data.token
             };
           } else {
+            console.log("logged out");
             Auth.logout();
           }
-        } else if(res.type === false){
+        } else if(res.data.type === false){
+          console.log("me is not working");
           console.log(res.data);
         }
       });

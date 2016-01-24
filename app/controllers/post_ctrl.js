@@ -22,15 +22,15 @@ exports.find = function(req, res) {
 };
 
 exports.create = function(req, res){
-  if(!req.body.title || !req.body.body){
+  if(!req.body.title || !req.body.content){
     res.json({
-      type: false,
+      success: false,
       message: "Invalid parameters"
     });
   }else {
     var post = new Post({
       title: req.body.title,
-      body: req.body.body,
+      body: req.body.content,
       category: req.body.category,
       author: req.user.username
     });
@@ -55,7 +55,7 @@ exports.create = function(req, res){
 };
 
 exports.list = function(req, res) {
-  Post.findById(req.params.id, function(err, post) {
+  Post.findById(req.params.post_id, function(err, post) {
     if(err) {
       return res.json({success:false, message:err});
     } else {
@@ -66,7 +66,7 @@ exports.list = function(req, res) {
 
 exports.edit = function(req, res) {
   req.body.post.updatedAt = Date.now();
-  Post.findByIdAndUpdate(req.params.id, req.body.post, function(err, post) {
+  Post.findByIdAndUpdate(req.params.post_id, req.body.post, function(err, post) {
     if(err) {
       return res.json({success:false, message:err});
     } else {
@@ -76,7 +76,7 @@ exports.edit = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-  Post.findByIdAndRemove(req.params.id, function(err, post) {
+  Post.findByIdAndRemove(req.params.post_id, function(err, post) {
     if(err){
       return res.json({success:false, message:err});
     }else {

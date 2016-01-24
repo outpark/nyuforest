@@ -49,16 +49,6 @@ $scope.register = function (){
 
       });
 
-      // $http.post('/api/users/signup', userData).success(function(res) {
-      //   console.log(res);
-      //   if (res.type === false){
-      //     $scope.error = res.message;
-      //   }else{
-      //     $scope.message = "환영합니다!";
-      //     $location.path("/");
-      //   }
-      //
-      // });
   }
 };
 

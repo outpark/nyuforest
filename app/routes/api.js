@@ -3,6 +3,7 @@
 var core_ctrl = require('../controllers/core_ctrl'),
   user_ctrl = require('../controllers/user_ctrl'),
   post_ctrl = require('../controllers/post_ctrl'),
+  comment_ctrl = require('../controllers/comment_ctrl'),
   ensureAuthorized = require('../controllers/user_ctrl').ensureAuthorized;
 
 exports.initApp = function(app){
@@ -22,6 +23,10 @@ exports.initApp = function(app){
   app.route('/api/users/signup')
   .post(user_ctrl.signup);
 
+  //to be edited
+  // app.route('/api/users/:user_id')
+  // .get(ensureAuthorized, user_ctrl.details);
+
   app.route('/api/posts')
   .get(post_ctrl.find)
   .post(ensureAuthorized, post_ctrl.create);
@@ -29,10 +34,17 @@ exports.initApp = function(app){
   app.route('/api/board/:category')
   .get(post_ctrl.find);
 
-  app.route('/api/posts/:id')
+  app.route('/api/posts/:post_id')
   .get(post_ctrl.list)
   .put(post_ctrl.edit)
   .delete(post_ctrl.delete);
+
+  app.route('/api/posts/:post_id/comments')
+  .get(ensureAuthorized, comment_ctrl.list)
+  .post(ensureAuthorized, comment_ctrl.create);
+
+  app.route('/api/posts/:post_id/comments/:comment_id')
+  .put(ensureAuthorized, comment_ctrl.edit);
 
   //
   // app.route('/about').get(core_ctrl.about);

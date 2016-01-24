@@ -130,7 +130,7 @@ exports.me = function(req, res) {
                 data: "Error occured: " + err
             });
         } else {
-          console.log(user);
+          // console.log(user);
             res.json({
                 type: true,
                 data:{
