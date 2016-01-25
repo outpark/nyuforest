@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" media="screen">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="../stylesheets/d3.css">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/home.css">
-    <link rel='stylesheet' type="text/css" href='../stylesheets/textAngular.css'>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/adjusted_style.css">
+    <link rel="stylesheet" href="/stylesheets/angular-ui-notification.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/d3.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <link rel='stylesheet' type="text/css" href='/stylesheets/textAngular.css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/adjusted_style.css">
 
     <title>nyuforest</title>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -40,8 +40,10 @@
             <li><a href="/#write">Write</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/#users" data-ng-hide="auth">Sign In</a></li>
-            <li><a href="/#register" data-ng-hide="auth">Register</a></li>
+            <li><a href="/#/" data-toggle="modal" data-target="#signin" data-ng-hide="auth">Sign in</a></li>
+            <li><a href="/#/" data-toggle="modal" data-target="#signup" data-ng-hide="auth">Sign up</a></li>
+            <!-- <li><a href="/#users" data-ng-hide="auth">Sign In</a></li>
+            <li><a href="/#register" data-ng-hide="auth">Register</a></li> -->
             <li><a href="/#user/{{signin.user_id}}" data-ng-show="auth">{{auth.username}}</a></li>
             <li><a href="/#/" data-ng-show="auth" ng-click="signout()">Logout</a></li>
             <!-- <li class="dropdown">
@@ -55,6 +57,58 @@
               </ul>
             </li> -->
           </ul>
+          <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Registration</h4>
+                </div>
+                <div ng-controller="authCtrl">
+                  <form meta="post" ng-submit="register()">
+                    <div class="modal-body">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon2" ng-model="email">
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" ng-model="username">
+                        <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="password">
+                        <input type="text" class="form-control" placeholder="Confirm" aria-describedby="sizing-addon2" ng-model="confirm">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-info">Sign Up!</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Log in</h4>
+                </div>
+                <div ng-controller="userCtrl">
+                  <form meta="post" ng-submit="signin()">
+                    <div class="modal-body">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" ng-model="username">
+                        <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="password">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-info">Sign In!</botton>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
@@ -78,6 +132,7 @@
     <script type="text/javascript" src="/js/controllers/editor.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
     <script type="text/javascript" src="/js/services/auth.js"></script>
+    <script src="/js/angular/angular-ui-notification.min.js"></script>
 
 
 

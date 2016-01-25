@@ -2,11 +2,10 @@
 var app = angular.module('forest');
 //console.log("Hello World from controller");
 
-  app.controller('userCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', '$route','Auth', function ($scope, $http, $location, $rootScope, $localStorage, $route, Auth) {
-    console.log("Hello World from usercontroller");
+  app.controller('userCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', '$route','Auth', 'Notification',
+  function ($scope, $http, $location, $rootScope, $localStorage, $route, Auth, Notification) {
 
     if($localStorage.token){
-      console.log("going to auth");
       Auth.me(function(res) {
         if(res.data.type === true){
           if(res.data.data.username){
@@ -16,7 +15,7 @@ var app = angular.module('forest');
               token:res.data.data.token
             };
           } else {
-            console.log("logged out");
+            Notification.info("로그아웃 되었습니다.");
             Auth.logout();
           }
         } else if(res.data.type === false){
@@ -27,9 +26,9 @@ var app = angular.module('forest');
     }
     $scope.signin = function (){
       if(!$scope.username){
-        $scope.error = "Username required!";
+        Notification.error("아이디를 입력해 주세요");
       } else if(!$scope.password) {
-        $scope.error = "Password required!";
+        Notification.error("비밀번호를 입력해 주세요");
       } else {
         console.log($scope.username);
         var userData = {
@@ -39,18 +38,19 @@ var app = angular.module('forest');
           Auth.signin(userData, function(success, error) {
             if(error){
               console.log("error in controller");
-              $scope.error = "등록되지 않은 유저이거나 비밀번호가 틀렸네요.";
+              Notification.error("등록되지 않은 유저이거나 비밀번호가 틀렸네요.");
             }else if(success.data.type === false){
-              $scope.error = "등록되지 않은 유저이거나 비밀번호가 틀렸네요.";
+              Notification.error("등록되지 않은 유저이거나 비밀번호가 틀렸네요.");
             }else if(success.data.type === true){
             console.log("A user logged in");
             console.log("CONTROLLER says: ", success.data);
             $localStorage.token = success.data.token;
-            $scope.message = "환영합니다!";
             $rootScope.auth = {
               username: success.data.username
             };
             console.log(success.data.username);
+            Notification.success("환영합니다." + " " + success.data.username + "님");
+            $('#signin').modal('hide');
             $location.path("/board");
 
             }
@@ -59,7 +59,7 @@ var app = angular.module('forest');
     };
 
     $scope.signout = function(){
-      console.log("Signout!");
+      Notification.info("로그아웃 되었습니다.");
       Auth.logout();
       $rootScope.auth = null;
 

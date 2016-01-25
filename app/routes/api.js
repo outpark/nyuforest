@@ -1,5 +1,4 @@
 
-
 var core_ctrl = require('../controllers/core_ctrl'),
   user_ctrl = require('../controllers/user_ctrl'),
   post_ctrl = require('../controllers/post_ctrl'),
@@ -36,8 +35,8 @@ exports.initApp = function(app){
 
   app.route('/api/posts/:post_id')
   .get(post_ctrl.list)
-  .put(post_ctrl.edit)
-  .delete(post_ctrl.delete);
+  .put(ensureAuthorized, post_ctrl.edit)
+  .delete(ensureAuthorized, post_ctrl.delete);
 
   app.route('/api/posts/:post_id/comments')
   .get(ensureAuthorized, comment_ctrl.list)

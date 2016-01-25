@@ -1,7 +1,8 @@
 (function(){
 var app = angular.module('forest');
 
-app.controller('authCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', 'Auth', function ($scope, $http, $location, $rootScope, $localStorage, Auth) {
+app.controller('authCtrl', ['$scope', '$http', '$location', '$rootScope', '$localStorage', 'Auth', 'Notification',
+function ($scope, $http, $location, $rootScope, $localStorage, Auth, Notification) {
 // console.log("Hello World from auth controller");
 
 $http.get('/api/register').success(function(res) {
@@ -14,15 +15,15 @@ $http.get('/api/register').success(function(res) {
 
 $scope.register = function (){
   if(!$scope.email){
-    $scope.error = "Email required!";
+    Notification.error("이메일을 입력해 주세요.");
   } else if(!$scope.password) {
-    $scope.error = "Password required!";
+    Notification.error("비밀번호를 입력해 주세요.");
   } else if(!$scope.username) {
-    $scope.error = "Username required!";
+    Notification.error("아이디를 입력해 주세요.");
   } else if(!$scope.confirm) {
-    $scope.error = "You have to confirm your password!";
+    Notification.error("비밀번호를 확인해 주세요.");
   } else if($scope.confirm != $scope.password) {
-    $scope.error = "Please, check you password again.";
+    Notification.error("동일한 비밀번호를 입력해 주세요.");
   } else {
     console.log($scope.email);
     var userData = {
@@ -33,10 +34,10 @@ $scope.register = function (){
       Auth.signup(userData, function(success, error){
         if(error){
           console.log("error in controller");
-          $scope.error = error.message;
+          Notification.error(error.message);
         }else if (success.data.type === false){
         console.log("CONTROLLER says: ", success.data);
-        $scope.error = "이미 존재하는 사용자입니다";
+        Notification.error("이미 존재하는 사용자입니다");
         }
         else if (success.data.type === true){
         console.log("CONTROLLER says: ", success.data);
@@ -44,6 +45,8 @@ $scope.register = function (){
         $rootScope.auth = {
           username: success.data.username
         };
+        $('#signup').modal('hide');
+        Notification.success("반갑습니다." + " " + success.data.username + "님");
         $location.path("/");
         }
 

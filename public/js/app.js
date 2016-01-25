@@ -3,12 +3,22 @@
   angular.module('forest', [
     'ngStorage',
     'ngRoute',
-    // 'angular-sanitize',
+    'ui-notification',
     'textAngular'
   ])
-  .config(['$routeProvider', '$httpProvider', '$locationProvider',
-  function ($routeProvider, $httpProvider, $locationProvider) {
+  .config(['$routeProvider', '$httpProvider', '$locationProvider', 'NotificationProvider',
+  function ($routeProvider, $httpProvider, $locationProvider, NotificationProvider) {
     console.log("hello world from app.js");
+    NotificationProvider.setOptions({
+            delay: 6000,
+            startTop: 20,
+            startRight: 10,
+            verticalSpacing: 20,
+            horizontalSpacing: 20,
+            positionX: 'center',
+            positionY: 'bottom'
+        });
+
     $routeProvider.
     when('/', {
       templateUrl: '../views/partials/home.html',
@@ -55,7 +65,7 @@
                 },
                 'responseError': function(response) {
                     if(response.status === 401 || response.status === 403) {
-                        $location.path('/signin');
+                        $location.path('/users');
                     }
                     return $q.reject(response);
                 }
