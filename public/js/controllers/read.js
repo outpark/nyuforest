@@ -2,8 +2,8 @@
 'use strict';
 
 var app = angular.module('forest');
-app.controller('readCtrl', ["$scope", "$http", "$location", "$routeParams", "$route",
-  function($scope, $http, $location, $routeParams, $route) {
+app.controller('readCtrl', ["$scope", "$http", "$location", "$routeParams", "$route", 'Notification',
+  function($scope, $http, $location, $routeParams, $route, Notification) {
     $http.get("/api/posts/" + $routeParams.post_id).success(function(res) {
       if(res.success===false){
         console.error("Something went wrong.");
@@ -23,7 +23,7 @@ app.controller('readCtrl', ["$scope", "$http", "$location", "$routeParams", "$ro
 
     $scope.submit = function() {
       if(!$scope.comment){
-        colsole.log("error");
+        Notification.error("내용을 입력해 주세요.");
       } else {
         var data = {
           "content" : $scope.comment

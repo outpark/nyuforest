@@ -1,0 +1,150 @@
+
+.forest-body {
+  /*margin-top: 20%;*/
+  /*background: #D1EBD4;*/
+  overflow: hidden;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+.forest-body svg {
+  margin: 0 auto;
+  width: 400px;
+  position: relative;
+  z-index: 1;
+  top: 50%;
+  height: 100%;
+}
+.forest-body svg .line:nth-of-type(1) {
+  -webkit-animation: dash_loader 1s 1.5s linear forwards;
+          animation: dash_loader 1s 1.5s linear forwards;
+}
+.forest-body svg .line:nth-of-type(2) {
+  -webkit-animation: dash_loader 1s 1.6s linear forwards;
+          animation: dash_loader 1s 1.6s linear forwards;
+}
+.forest-body svg .line:nth-of-type(3) {
+  -webkit-animation: dash_loader 1s 1.7s linear forwards;
+          animation: dash_loader 1s 1.7s linear forwards;
+}
+.forest-body svg .line:nth-of-type(4) {
+  -webkit-animation: dash_loader 1s 1.8s linear forwards;
+          animation: dash_loader 1s 1.8s linear forwards;
+}
+.forest-body svg .line:nth-of-type(5) {
+  -webkit-animation: dash_loader 1s 1.9s linear forwards;
+          animation: dash_loader 1s 1.9s linear forwards;
+}
+.forest-body svg .line:nth-of-type(6) {
+  -webkit-animation: dash_loader 1s 2s linear forwards;
+          animation: dash_loader 1s 2s linear forwards;
+}
+.forest-body svg .line:nth-of-type(7) {
+  -webkit-animation: dash_loader 1s 2.1s linear forwards;
+          animation: dash_loader 1s 2.1s linear forwards;
+}
+.forest-body svg .line:nth-of-type(8) {
+  -webkit-animation: dash_loader 1s 2.2s linear forwards;
+          animation: dash_loader 1s 2.2s linear forwards;
+}
+.forest-body svg .line:nth-of-type(9) {
+  -webkit-animation: dash_loader 1s 2.3s linear forwards;
+          animation: dash_loader 1s 2.3s linear forwards;
+}
+.forest-body svg .line:nth-of-type(10) {
+  -webkit-animation: dash_loader 1s 2.4s linear forwards;
+          animation: dash_loader 1s 2.4s linear forwards;
+}
+
+.forest img {
+  height: 100%;
+  max-height: 1000px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+.forest img:nth-of-type(1) {
+  -webkit-animation: popup 0.7s 0.1s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.1s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(2) {
+  -webkit-animation: popup 0.7s 0.2s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.2s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(3) {
+  -webkit-animation: popup 0.7s 0.3s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.3s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(4) {
+  -webkit-animation: popup 0.7s 0.4s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.4s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(5) {
+  -webkit-animation: popup 0.7s 0.5s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.5s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(6) {
+  -webkit-animation: popup 0.7s 0.6s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.6s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(7) {
+  -webkit-animation: popup 0.7s 0.7s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.7s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(8) {
+  -webkit-animation: popup 0.7s 0.8s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.8s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(9) {
+  -webkit-animation: popup 0.7s 0.9s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 0.9s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+.forest img:nth-of-type(10) {
+  -webkit-animation: popup 0.7s 1s forwards cubic-bezier(0, 0.615, 0, 0.995);
+          animation: popup 0.7s 1s forwards cubic-bezier(0, 0.615, 0, 0.995);
+}
+
+@-webkit-keyframes popup {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+@keyframes popup {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+path, polyline, line {
+  stroke-dasharray: 750;
+  stroke-dashoffset: 750;
+  stroke-width: 12px;
+  stroke-miterlimit: 10;
+  stroke-linejoin: round;
+  fill: none;
+  stroke: white;
+  z-index: 1;
+  opacity: 1;
+}
+
+@-webkit-keyframes dash_loader {
+  to {
+    stroke-dashoffset: -0;
+    stroke-width: 3px;
+    stroke: white;
+  }
+}
+
+@keyframes dash_loader {
+  to {
+    stroke-dashoffset: -0;
+    stroke-width: 3px;
+    stroke: white;
+  }
+}

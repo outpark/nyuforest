@@ -34,12 +34,12 @@ exports.initApp = function(app){
   .get(post_ctrl.find);
 
   app.route('/api/posts/:post_id')
-  .get(post_ctrl.list)
+  .get(ensureAuthorized, post_ctrl.list)
   .put(ensureAuthorized, post_ctrl.edit)
   .delete(ensureAuthorized, post_ctrl.delete);
 
   app.route('/api/posts/:post_id/comments')
-  .get(ensureAuthorized, comment_ctrl.list)
+  .get(comment_ctrl.list)
   .post(ensureAuthorized, comment_ctrl.create);
 
   app.route('/api/posts/:post_id/comments/:comment_id')

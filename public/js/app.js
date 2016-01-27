@@ -8,7 +8,7 @@
   ])
   .config(['$routeProvider', '$httpProvider', '$locationProvider', 'NotificationProvider',
   function ($routeProvider, $httpProvider, $locationProvider, NotificationProvider) {
-    console.log("hello world from app.js");
+    // console.log("hello world from app.js");
     NotificationProvider.setOptions({
             delay: 6000,
             startTop: 20,
@@ -46,6 +46,9 @@
     when('/write', {
       templateUrl: '../views/partials/write.html',
       controller: 'editorCtrl'
+    }).
+    when('/contact', {
+      templateUrl: '../views/partials/contact.html'
     }).
     when('/post/:post_id',{
 				templateUrl: '../views/partials/read.html',

@@ -19,6 +19,7 @@ html {
 }
 body {
   margin: 1%;
+  overflow-x: hidden;
 }
 article,
 aside,
@@ -1101,7 +1102,8 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #2196f3;
+  /*color: #2196f3;*/
+  color: #666666;
   text-decoration: none;
 }
 a:hover,
@@ -4779,7 +4781,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 6px 16px;
   line-height: 1.846;
   text-decoration: none;
-  color: #2196f3;
+  /*color: #2196f3;*/
+  color: #666666;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   margin-left: -1px;
