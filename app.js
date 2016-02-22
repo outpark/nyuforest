@@ -12,7 +12,7 @@ var http = require('http');
 
 //var User = require('./models/User');
 var app = module.exports = express();
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 8000;
 
 
 
@@ -45,5 +45,5 @@ app.use(function(req, res, next) {
 require('./app/routes/api').initApp(app);
 
 app.listen(port, function() {
-  console.log("Server running on 4000");
+  console.log("Server running on "+ port);
 });
