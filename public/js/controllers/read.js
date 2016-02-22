@@ -39,7 +39,6 @@ app.controller('readCtrl', ["$scope", "$http", "$location", "$routeParams", "$ro
     };
 
     $scope.down = function(){
-      console.log("Sending request");
       $http.put('/api/post/'+$routeParams.post_id+"/down").success(function(res){
 
         if(res.success === false){

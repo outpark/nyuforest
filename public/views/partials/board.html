@@ -14,7 +14,7 @@
 
 
   <div class="col-xs-12 col-md-7">
-      <article class="main-board" ng-controller="boardCtrl">
+      <article class="main-board">
       <div class="list-group" >
         <a href="/#board" class="list-group-item list-group-item-info">
           <!-- <span class="badge">14</span> -->
@@ -29,9 +29,9 @@
           <span class="badge up">{{post.ups}}</span>
 
         </a>
-        <a href="/#board" class="list-group-item" ng-repeat="page in pages" ng-click="paging(page)">
-          1
-        </a>
+        <!-- <a href="/#board" class="list-group-item" ng-repeat="page in pages" ng-click="paging(page)">
+          {{pages}}
+        </a> -->
       </div>
 
       </article>
@@ -53,11 +53,11 @@
       </div>
       </aside>
     </div>
-    <div class="pagination center">
+    <div class="text-center">
       <nav class="col-xs-12 col-md-12">
 
         <ul class="pagination">
-          <li ng-repeat="page in pages" ng-click="paging(page)"><a href="#">{{page}}</a></li>
+          <li ng-repeat="page in pages" ng-click="paging(page)"><a href>{{page}}</a></li>
         </ul>
 
       </nav>

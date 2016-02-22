@@ -44,7 +44,7 @@ $scope.submit = function() {
         console.log("Something went wrong");
       }else {
         console.log("Successfully posted");
-        console.log(res.data);
+        // console.log(res.data);
         $location.path("/board");
       }
     });

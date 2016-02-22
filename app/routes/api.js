@@ -55,7 +55,7 @@ exports.initApp = function(app){
   app.route('/api/post/:post_id/comments/:comment_id')
   .put(ensureAuthorized, comment_ctrl.edit);
 
-  app.route('/api/posts/:current_index/:next_page')
+  app.route('/api/posts/:current_id/:next_page')
   .get(post_ctrl.find);
 
 
