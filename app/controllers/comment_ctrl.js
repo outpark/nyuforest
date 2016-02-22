@@ -45,6 +45,7 @@ exports.create = function(req, res){
               message:"error occured while saving"
             });
           }else {
+            post.comment_num++;
             post.comment_id.push(comment._id);
             post.save(function(err){
               if(err) {

@@ -1,49 +1,67 @@
+<div class='main-container'>
 <div class="row">
-  <div class="col-xs-6 col-md-2">
-    <aside>
+  <div class="col-xs-12 col-md-2">
+    <aside class="main-side">
     <div class="list-group">
       <a ng-href="/#board/free" class="list-group-item">자유 게시판</a>
-      <a ng-href="/#board/job" class="list-group-item">사람을 구해요 게시판</a>
-      <a ng-href="/#board/sell" class="list-group-item">사고 팔아요 게시판</a>
-      <a ng-href="/#board/info" class="list-group-item">정보 공유 게시판</a>
-      <a ng-href="/#board/letter" class="list-group-item">운영자/개발자에게 게시판</a>
+      <a ng-href="/#board/info" class="list-group-item">정보 공유</a>
+      <a ng-href="/#board/job" class="list-group-item">사람을 구해요</a>
+      <a ng-href="/#board/sell" class="list-group-item">사고 팔아요</a>
+      <a ng-href="/#board/letter" class="list-group-item">운영자/개발자에게</a>
     </div>
     </aside>
   </div>
 
 
-  <div class="col-xs-12 col-md-10">
-      <article>
+  <div class="col-xs-12 col-md-7">
+      <article class="main-board" ng-controller="boardCtrl">
       <div class="list-group" >
         <a href="/#board" class="list-group-item list-group-item-info">
           <!-- <span class="badge">14</span> -->
           게시판 목록입니다.
         </a>
         <a ng-href="/#post/{{post._id}}" class="list-group-item" ng-repeat="post in posts">
-          {{ post.title }} /
-          {{post.author}}
-          <span class="badge" ng-repeat="post in posts">{{post.comment}}</span>
+          {{ post.title }}
+          <small> : {{post.author}}</small>
+          <span class="comment_number">[{{post.comment_num}}]</span>
+
+          <span class="badge down">{{post.downs}}</span>
+          <span class="badge up">{{post.ups}}</span>
+
+        </a>
+        <a href="/#board" class="list-group-item" ng-repeat="page in pages" ng-click="paging(page)">
+          1
         </a>
       </div>
+
       </article>
-      <nav>
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <aside class="main-side" ng-controller="bestCtrl">
+      <div class="list-group"><a href="/#board" class="list-group-item list-group-item-info">
+        BEST
+      </a>
+      <a ng-href="/#post/{{best._id}}" class="list-group-item best" ng-repeat="best in bests">
+        {{ bset.title }}
+        <!-- <small> : {{best.author}}</small>
+        <span class="comment_number">[{{best.comment_num}}]</span>
+
+        <span class="badge down">{{best.downs}}</span> -->
+        <span class="badge up">{{best.ups}}</span>
+        <br>
+      </a>
+      </div>
+      </aside>
+    </div>
+    <div class="pagination center">
+      <nav class="col-xs-12 col-md-12">
+
         <ul class="pagination">
-          <li>
-            <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li>
-            <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
+          <li ng-repeat="page in pages" ng-click="paging(page)"><a href="#">{{page}}</a></li>
         </ul>
+
       </nav>
-  </div>
+      </div>
+
+</div>
 </div>

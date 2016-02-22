@@ -1,12 +1,13 @@
+<div class='main-container'>
 <div class="row">
   <div class="col-xs-6 col-md-2">
     <aside>
       <div class="list-group">
         <a ng-href="/#board/free" class="list-group-item">자유 게시판</a>
-        <a ng-href="/#board/job" class="list-group-item">사람을 구해요 게시판</a>
-        <a ng-href="/#board/sell" class="list-group-item">사고 팔아요 게시판</a>
-        <a ng-href="/#board/info" class="list-group-item">정보 공유 게시판</a>
-        <a ng-href="/#board/letter" class="list-group-item">운영자/개발자에게 게시판</a>
+        <a ng-href="/#board/job" class="list-group-item">사람을 구해요</a>
+        <a ng-href="/#board/sell" class="list-group-item">사고 팔아요</a>
+        <a ng-href="/#board/info" class="list-group-item">정보 공유</a>
+        <a ng-href="/#board/letter" class="list-group-item">운영자/개발자에게</a>
       </div>
     </aside>
   </div>
@@ -17,11 +18,24 @@
         <div class="panel-heading"><h4>{{post.title}}</h4> /
           <a ng-href="/#user/{{post.author}}">{{post.author}}</a>
         </div>
+        <br>
           <div class="panel-body" ng-bind-html="post.body">
           <!-- {{post.body}} -->
           </div>
+            <div class="text-center">
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default" ng-click="up()">
+              <span class="glyphicon glyphicon-hand-up" aria-hidden="true">{{up_count}}</span>
+            </button>
+              <button type="button" class="btn btn-default" ng-click="down()">
+              <span class="glyphicon glyphicon-hand-down" aria-hidden="true">{{down_count}}</span>
+            </button>
+            </div>
+          </div>
+        <br>
+
             <ul class="list-group">
-              <li class="list-group-item"  ng-repeat="comment in comments">
+              <li class="list-group-item comment"  ng-repeat="comment in comments">
                 <a ng-href="/#user/{{comment.author}}">{{comment.author}}</a>
                 <p>{{comment.content}}</p>
               </li>
@@ -45,4 +59,5 @@
       </div>
     </article>
   </div>
+</div>
 </div>

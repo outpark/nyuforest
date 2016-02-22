@@ -18,7 +18,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 1%;
+  /*margin: 1%;*/
   overflow-x: hidden;
 }
 article,
@@ -4767,8 +4767,11 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .pagination {
   display: inline-block;
-  padding-left: 0;
-  margin: 23px 0;
+  /*padding-left: 0;*/
+  /*max-width: 400px;*/
+  position:relative;
+  margin:0 auto;
+  /*margin: 23px 0;*/
   border-radius: 3px;
 }
 .pagination > li {
@@ -5041,8 +5044,8 @@ a.badge:focus {
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    /*padding-top: 48px;
+    padding-bottom: 48px;*/
   }
   .container .jumbotron,
   .container-fluid .jumbotron {
@@ -5513,7 +5516,7 @@ button.list-group-item-danger.active:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
-  padding: 15px;
+  padding: 20px;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -5744,7 +5747,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
   color: #212121;
-  background-color: #f5f5f5;
+  background-color: #F7F7FC;
   border-color: #dddddd;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
@@ -6909,16 +6912,17 @@ button.close {
   -webkit-background-size: 200% 200%;
           background-size: 200%;
   background-position: 50%;
+  background-color: #9768D1;
 }
 .btn-info:focus {
-  background-color: #9c27b0;
+  background-color: #9768D1;
 }
 .btn-info:hover,
 .btn-info:active:hover {
-  background-color: #862197;
+  background-color: #7B52AB;
 }
 .btn-info:active {
-  background-color: #701c7e;
+  background-color: #7B52AB;
   background-image: -webkit-radial-gradient(circle, #701c7e 10%, #9c27b0 11%);
   background-image: -o-radial-gradient(circle, #701c7e 10%, #9c27b0 11%);
   background-image: radial-gradient(circle, #701c7e 10%, #9c27b0 11%);

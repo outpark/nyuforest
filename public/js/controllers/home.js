@@ -2,7 +2,7 @@
 var app = angular.module('forest');
 
 app.controller('homeCtrl', ['$scope', '$http','$localStorage', 'Notification',
- function($scopes, $http, $localStorage, Notification) {
+ function($scope, $http, $localStorage, Notification) {
   // console.log("Hello World from homeCtrl");
   //
   // $http.get('/api').success(function(res) {

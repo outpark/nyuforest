@@ -1,15 +1,91 @@
-.list-group.left{
-  float: left;
-  width: 15%;
-  margin-left: 10px;
+body {
+  background-color: #FFFFFF;
 }
-.list-group.right {
-  float: right;
-  width: 82%;
-  margin-right: 10px;
+.main-container {
+  margin: 0 auto;
+  width: 1100px;
+}
+.main-board{
+  max-width: 750px;
+  min-width: 400px;
+}
+.main-side{
+  max-width: 350px;
+}
+.navbar {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:13px !important;
+    padding-bottom:0 !important;
+    height: 50px;
+}
+.navbar {
+  min-height:50px !important;
+  max-height:50px !important;
 }
 .panel.panel-default.right {
   float: right;
   width: 82%;
   margin-right: 10px;
 }
+.jumbotron.home {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-bottom: 0;
+  background-color: #F7F7FC;
+}
+
+.list-group-item.comment p {
+  padding-left: 30px;
+}
+.list-group-item.comment a {
+  padding-left: 25px;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+.list-groupe-item.best {
+  /*padding-left: 5px;
+  padding-bottom: 5px;*/
+}
+.home-forest {
+  padding: 0;
+  /*padding-bottom: 0 !important;*/
+  /*margin: 0;*/
+}
+.footbar {
+  margin: 0 auto;
+  background-color: #FEFCFF;
+  max-width: 1300px;
+  border: none;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.comment_number {
+  color: #ba3c3f;
+}
+.badge.up{
+  background-color: #F1BAF3;
+}
+.badge.down{
+  background-color: #5D4970;
+}
+.list-group-item-info {
+  color: #9c27b0;
+  background-color: #FAEEFF;
+}
+.navbar.navbar-default.forest{
+  background-color: #FEFCFF;
+}
+.panel-heading{
+  background-color: #FEFCFF;
+}
+@media (max-width:1000px){
+  .pagination.center{
+    text-align: center !important;
+    /*width: 100%;*/
+  }
+}
+/*.navbar {max-height:30px !important;}*/

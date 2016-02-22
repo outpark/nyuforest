@@ -5,13 +5,21 @@ var User = require('../models/user');
 
 exports.find = function(req, res) {
   var conditions = {};
+  var PAGE_SIZE = 15;
+  var next = Number(req.params.next_page);
   if(req.path.indexOf("/api/posts") > -1) {
     conditions = conditions;
-  } else if(req.path.indexOf("/api/board") > -1){
+  }else if(req.path.indexOf("/api/board") > -1){
     conditions = {category:req.params.category};
+  }
+  if(req.params.current_id && next >= 0){
+
+  }else if(req.params.current_id && next < 0){
+
   }
       Post.find(conditions)
       .sort('-created_at')
+      .limit(15)
       .exec(function(err, posts) {
         if(err){
           return res.json({success:false, message:err});
@@ -20,6 +28,18 @@ exports.find = function(req, res) {
         }
       });
 };
+
+exports.best = function(req, res) {
+
+      find({ups:{$gt:2}}).sort({_id:-1}).limit(7).exec(function(err, posts) {
+        if(err){
+          return res.json({success:false, message:err});
+        } else {
+          res.json({success:true, data:posts});
+        }
+      });
+};
+
 
 exports.create = function(req, res){
   if(!req.body.title || !req.body.content){

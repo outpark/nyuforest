@@ -3,6 +3,7 @@ var core_ctrl = require('../controllers/core_ctrl'),
   user_ctrl = require('../controllers/user_ctrl'),
   post_ctrl = require('../controllers/post_ctrl'),
   comment_ctrl = require('../controllers/comment_ctrl'),
+  vote_ctrl = require('../controllers/vote_ctrl'),
   ensureAuthorized = require('../controllers/user_ctrl').ensureAuthorized;
 
 exports.initApp = function(app){
@@ -30,22 +31,34 @@ exports.initApp = function(app){
   .get(post_ctrl.find)
   .post(ensureAuthorized, post_ctrl.create);
 
+  app.route('/api/bests')
+  .get(post_ctrl.best);
+
   app.route('/api/board/:category')
   .get(post_ctrl.find);
 
-  app.route('/api/posts/:post_id')
+  app.route('/api/post/:post_id')
   .get(ensureAuthorized, post_ctrl.list)
   .put(ensureAuthorized, post_ctrl.edit)
   .delete(ensureAuthorized, post_ctrl.delete);
 
-  app.route('/api/posts/:post_id/comments')
+  app.route('/api/post/:post_id/comments')
   .get(comment_ctrl.list)
   .post(ensureAuthorized, comment_ctrl.create);
 
-  app.route('/api/posts/:post_id/comments/:comment_id')
+  app.route('/api/post/:post_id/up')
+  .put(ensureAuthorized, vote_ctrl.upToggle);
+
+  app.route('/api/post/:post_id/down')
+  .put(ensureAuthorized, vote_ctrl.downToggle);
+
+  app.route('/api/post/:post_id/comments/:comment_id')
   .put(ensureAuthorized, comment_ctrl.edit);
 
-  //
+  app.route('/api/posts/:current_index/:next_page')
+  .get(post_ctrl.find);
+
+
   // app.route('/about').get(core_ctrl.about);
   // app.route('/home').get(core_ctrl.home);
   //

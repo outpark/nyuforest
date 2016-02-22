@@ -50,6 +50,9 @@
     when('/contact', {
       templateUrl: '../views/partials/contact.html'
     }).
+    when('/license', {
+      templateUrl: '../views/partials/license.html'
+    }).
     when('/post/:post_id',{
 				templateUrl: '../views/partials/read.html',
 				controller: 'readCtrl'
