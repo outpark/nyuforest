@@ -42,13 +42,10 @@ var app = angular.module('forest');
             }else if(success.data.type === false){
               Notification.error("등록되지 않은 유저이거나 비밀번호가 틀렸네요.");
             }else if(success.data.type === true){
-            console.log("A user logged in");
-            console.log("CONTROLLER says: ", success.data);
             $localStorage.token = success.data.token;
             $rootScope.auth = {
               username: success.data.username
             };
-            console.log(success.data.username);
             Notification.success("환영합니다." + " " + success.data.username + "님");
             $('#signin').modal('hide');
             $location.path("/board");

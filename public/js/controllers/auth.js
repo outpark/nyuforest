@@ -36,11 +36,11 @@ $scope.register = function (){
           console.log("error in controller");
           Notification.error(error.message);
         }else if (success.data.type === false){
-        console.log("CONTROLLER says: ", success.data);
+
         Notification.error("이미 존재하는 사용자입니다");
         }
         else if (success.data.type === true){
-        console.log("CONTROLLER says: ", success.data);
+
         $localStorage.token = success.data.token;
         $rootScope.auth = {
           username: success.data.username
