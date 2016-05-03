@@ -62,6 +62,8 @@ app.controller('boardCtrl', ["$scope", "$http", "$routeParams", "Notification",
 app.controller('bestCtrl', ["$scope", "$http", function($scope, $http) {
     $http.get("/api/bests").success(function(res) {
       $scope.bests = res.data;
+      console.log("Coming from best");
+      console.log(res.data[0]);
       // $scope.up_count = res.data.ups;
 
     });

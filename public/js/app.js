@@ -4,7 +4,8 @@
     'ngStorage',
     'ngRoute',
     'ui-notification',
-    'textAngular'
+    'textAngular',
+    'summernote'
   ])
   .config(['$routeProvider', '$httpProvider', '$locationProvider', 'NotificationProvider',
   function ($routeProvider, $httpProvider, $locationProvider, NotificationProvider) {

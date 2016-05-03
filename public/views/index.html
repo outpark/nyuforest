@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" media="screen">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -12,11 +11,13 @@
     <link rel='stylesheet' type="text/css" href='/stylesheets/textAngular.css'>
     <link rel="stylesheet" type="text/css" href="/stylesheets/adjusted_style.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/forest.css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+
 
     <title>nyuforest</title>
       <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
       <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
 
   </head>
   <body data-twttr-rendered="true">
@@ -68,16 +69,20 @@
                 <div ng-controller="authCtrl">
                   <form meta="post" ng-submit="register()">
                     <div class="modal-body">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon2" ng-model="email">
-                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" ng-model="username">
-                        <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="password">
-                        <input type="text" class="form-control" placeholder="Confirm" aria-describedby="sizing-addon2" ng-model="confirm">
+                      <div class="form-group">
+                        <label class="control-label" for="inputSmall">Email</label>
+                        <input class="form-control input-sm" type="text" id="inputSmall" placeholder="Email" ng-model="email">
+                        <label class="control-label" for="inputSmall">Username</label>
+                        <input class="form-control input-sm" type="text" id="inputSmall" placeholder="Username" ng-model="username">
+                        <label class="control-label" for="inputSmall">Password</label>
+                        <input class="form-control input-sm" type="text" id="inputSmall" placeholder="Password" ng-model="password">
+                        <label class="control-label" for="inputSmall">Confirm</label>
+                        <input class="form-control input-sm" type="text" id="inputSmall" placeholder="Confirm" ng-model="confirm">
                       </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-info">Sign Up!</button>
+                      <button type="submit" class="btn btn-primary">Sign Up!</button>
                     </div>
                   </form>
                 </div>
@@ -95,14 +100,18 @@
                 <div ng-controller="userCtrl">
                   <form meta="post" ng-submit="signin()">
                     <div class="modal-body">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2" ng-model="username">
-                        <input type="text" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" ng-model="password">
+                      <div class="form-group">
+                        <label class="control-label" for="inputSmall">Username</label>
+                        <input class="form-control input-sm" type="text" id="inputSmall" placeholder="Username" ng-model="username">
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label" for="inputSmall">Password</label>
+                        <input class="form-control input-sm" type="text" id="inputSmall" placeholder="Password" ng-model="password">
                       </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-info">Sign In!</botton>
+                      <button type="submit" class="btn btn-primary">Sign In!</botton>
                     </div>
                   </form>
                 </div>
@@ -119,10 +128,19 @@
     </main>
     <br>
     <footer>
-      <div class="footbar" style="text-align:center; word-spacing: 15px;">
+
+      <div class="col-lg-12">
+
+        <div style="text-align:center; word-spacing: 15px;">
+          <a href="/#contact">문의</a>
+          <a href="/#license">License</a>
+        </div>
+
+      </div>
+      <!-- <div style="text-align:center; word-spacing: 15px;">
         <a href="/#contact">문의</a>
         <a href="/#license">License</a>
-      </div>
+      </div> -->
     </footer>
 
     </body>
@@ -143,6 +161,8 @@
     <script type="text/javascript" src="/js/services/auth.js"></script>
     <script src="/js/angular/angular-ui-notification.min.js"></script>
     <script type="text/javascript" src="/js/forest.js"></script>
+    <script type="text/javascript" src="/js/angular/angular-summernote.min.js"></script>
+    <script type="text/javascript" src="/js/angular/summernote-ko-KR.js"></script>
 
 
 

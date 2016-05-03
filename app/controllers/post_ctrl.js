@@ -83,7 +83,7 @@ exports.find = function(req, res) {
 };
 
 exports.best = function(req, res) {
-      Post.find({ups:{$gt:3}}).sort({_id:-1}).limit(7).exec(function(err, posts) {
+      Post.find({ups:{$gt:2}}).sort({_id:-1}).limit(7).exec(function(err, posts) {
         if(err){
           return res.json({success:false, message:err});
         } else {
