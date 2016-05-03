@@ -16,6 +16,9 @@ body{
   margin: 0 auto;
   max-width: 1300px;
 }
+.input-group.comment{
+  margin-left: 3px;
+}
 
 
 .panel.panel-default.right {

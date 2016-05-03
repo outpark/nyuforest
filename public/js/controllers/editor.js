@@ -21,6 +21,9 @@ $scope.submit = function() {
       case "사람을 구해요 게시판":
         $scope.category = "job";
         break;
+      case "맛집 리뷰":
+        $scope.category = "food";
+        break;
       case "사고 팔아요 게시판":
         $scope.category = "sell";
         break;
@@ -32,6 +35,7 @@ $scope.submit = function() {
         break;
       default:
         $scope.category = "free";
+        break;
     }
     var data = {
       "title" : $scope.title,
