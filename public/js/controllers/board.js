@@ -68,14 +68,29 @@ app.controller('bestCtrl', ["$scope", "$http", function($scope, $http) {
 
     });
 }]);
-app.controller('categoryCtrl', ["$scope", "$http", "$routeParams", function($scope, $http, $routeParams) {
+app.controller('categoryCtrl', ["$scope", "$http", "$routeParams", "Notification",
+function($scope, $http, $routeParams, Notification) {
+  var currentPage;
+  var index;
   $http.get("/api/board/"+$routeParams.category).success(function(res) {
     $scope.posts = res.data;
     // $scope.up_count = res.data.ups;
+    currentPage = res.currentPage;
+    index = res.data[0]._id;
     $scope.pages = pages(Number(res.currentPage), Number(res.totalPage));
   });
   $scope.paging = function(page){
-
+    if(typeof page === "number"){
+      var skip = page - currentPage;
+      $http.get("/api/board/"+$routeParams.category+"/"+index+"/"+skip).success(function(res){
+        $scope.posts = res.data;
+        $scope.pages = pages(Number(res.currentPage), Number(res.totalPage));
+        currentPage = res.currentPage;
+        index = res.data[0]._id;
+      });
+    }else {
+      Notification.info("현재 페이지 입니다.");
+    }
   };
 
 

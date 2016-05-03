@@ -41,13 +41,13 @@
       <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Categories</label>
         <div class="col-lg-10">
-          <select multiple="" class="form-control">
-            <option>자유 게시판</option>
-            <option>맛집 리뷰</option>
-            <option>정보 공유 게시판</option>
-            <option>사람을 구해요 게시판</option>
-            <option>사고 팔아요 게시판</option>
-            <option>운영자/개발자에게 게시판</option>
+          <select multiple class="form-control" ng-model="category">
+            <option selected value="free">자유 게시판</option>
+            <option value="food">맛집 리뷰</option>
+            <option value="info">정보 공유 게시판</option>
+            <option value="job">사람을 구해요 게시판</option>
+            <option value="sell">사고 팔아요 게시판</option>
+            <option value="letter">운영자/개발자에게 게시판</option>
           </select>
         </div>
       </div>

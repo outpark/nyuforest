@@ -5,6 +5,7 @@ var jwt = require('jsonwebtoken');
 var User = require('../models/user');
 
 exports.find = function(req, res) {
+  var isCategory = false;
   var conditions = {};
   var sort = {_id:-1};
   var PAGE_SIZE = 15;
@@ -12,15 +13,19 @@ exports.find = function(req, res) {
   var skip;
   var next = req.params.next_page;
   if(req.path.indexOf("/api/posts") > -1) {
-    conditions = conditions;
+    console.log("regular search");
+
   }else if(req.path.indexOf("/api/board") > -1){
-    conditions = {category:req.params.category};
+    console.log("category search: " + req.params.category);
+    conditions = {"category":req.params.category};
+    isCategory = true;
   }
   if(req.params.current_id && next >= 0){
     console.log("tryna skip some pages1");
     conditions["_id"] = {$lte:req.params.current_id};
 		skip = next * PAGE_SIZE;
-  }else if(req.params.current_id && next < 0){
+  }
+  if(req.params.current_id && next < 0){
     console.log("tryna skip some pages1");
     conditions["_id"] = {$gt:req.params.current_id};
 		skip = Math.abs(next * PAGE_SIZE) - PAGE_SIZE;
@@ -42,7 +47,13 @@ exports.find = function(req, res) {
       });
     },
     function(posts, callback){
-      Post.find({_id:{$gt:posts[0]}})
+      if(isCategory){
+        count_conditions = {"_id":{$gt:posts[0]}};
+        count_conditions = {"category":req.params.category};
+      }else{
+        count_conditions = {"_id":{$gt:posts[0]}};
+      }
+      Post.find(count_conditions)
 				.count(function(err, postCount){
 					if (err) {
 						return res.status(500).json({
@@ -50,19 +61,23 @@ exports.find = function(req, res) {
 							message:"error while counting"
 						});
 					}else{
-						var currentPage = ((postCount/PAGE_SIZE)+1).toFixed(0);
+            console.log("postCount is: " + postCount);
+						var currentPage = ((Math.floor(postCount/PAGE_SIZE))+1).toFixed(0);
+            console.log("currentPage is: " + currentPage);
 						callback(null, posts, currentPage);
 					}
 				});
     },
     function(posts, currentPage, callback){
-      Post.find({}).count(function(err, totalCount){
+      Post.find(conditions).count(function(err, totalCount){
         if(err){
           return res.json({success:false, message:err});
         }else{
+          console.log("totalCOUNT: " + totalCount);
           var totalPage = totalCount/PAGE_SIZE;
+          console.log("totalPage: "+totalPage);
 					if(totalCount % PAGE_SIZE){
-						totalPage = Math.floor(totalPage + 1);
+              totalPage = Math.floor(totalPage+1);
 					}
           callback(null, posts, currentPage, totalPage);
         }
@@ -100,6 +115,10 @@ exports.create = function(req, res){
       message: "Invalid parameters"
     });
   }else {
+    console.log(Object.keys(req.body.category).length);
+    if(Object.keys(req.body.category).length > 1){
+      console.log("hey its two");
+    }
     var post = new Post({
       title: req.body.title,
       body: req.body.content,
@@ -114,16 +133,6 @@ exports.create = function(req, res){
       }
     });
   }
-
-
-
-  // Post.create(req.body.post, function (err, post) {
-  //   if (err) {
-  //     return res.json({success:false, message:err});
-  //   } else {
-  //     res.json({success:true, data:post});
-  //   }
-  // });
 };
 
 exports.list = function(req, res) {

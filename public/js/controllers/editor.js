@@ -1,42 +1,23 @@
 (function(){
 var app = angular.module('forest');
 
-app.controller('editorCtrl',['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('editorCtrl',['$scope', '$http', '$location', "Notification",
+function($scope, $http, $location, Notification){
 
 $scope.title = "";
 $scope.body = "";
-$scope.category = "";
+$scope.category = {};
 $scope.submit = function() {
   if($scope.title.length <= 1) {
+    Notification.error("제목을 입력해 주세요.");
     console.error("A title must exist");
     console.log($scope.title.length);
   }else if($scope.body.length <= 3){
+    Notification.error("내용을 입력해 주세요.");
     console.error("Contents must exist");
     console.log($scope.body.length);
   }else {
-    switch($scope.category){
-      case "자유 게시판":
-        $scope.category = "free";
-        break;
-      case "사람을 구해요 게시판":
-        $scope.category = "job";
-        break;
-      case "맛집 리뷰":
-        $scope.category = "food";
-        break;
-      case "사고 팔아요 게시판":
-        $scope.category = "sell";
-        break;
-      case "정보 공유 게시판":
-        $scope.category = "info";
-        break;
-      case "운영자/개발자에게 게시판":
-        $scope.category = "letter";
-        break;
-      default:
-        $scope.category = "free";
-        break;
-    }
+    console.log($scope.category);
     var data = {
       "title" : $scope.title,
       "content" : $scope.body,

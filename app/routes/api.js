@@ -37,6 +37,9 @@ exports.initApp = function(app){
   app.route('/api/board/:category')
   .get(post_ctrl.find);
 
+  app.route('/api/board/:category/:current_id/:next_page')
+  .get(post_ctrl.find);
+
   app.route('/api/post/:post_id')
   .get(ensureAuthorized, post_ctrl.list)
   .put(ensureAuthorized, post_ctrl.edit)
