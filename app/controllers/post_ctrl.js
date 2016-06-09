@@ -3,9 +3,10 @@ var async = require('async');
 var Post = require('../models/post');
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
-
+//카테고리랑 단과대 추가해야함
 exports.find = function(req, res) {
   var isCategory = false;
+  var isSchool = false;
   var conditions = {};
   var sort = {_id:-1};
   var PAGE_SIZE = 15;
@@ -17,8 +18,14 @@ exports.find = function(req, res) {
 
   }else if(req.path.indexOf("/api/board") > -1){
     console.log("category search: " + req.params.category);
-    conditions = {"category":req.params.category};
-    isCategory = true;
+    console.log("its school" + req.params.school);
+    if(Object.keys(req.body.category).length >= 1){
+      conditions = {"category":req.params.category};
+      isCategory = true;
+    }else{
+      conditions = {"school":req.params.school};
+      isSchool = true;
+    }
   }
   if(req.params.current_id && next >= 0){
     console.log("tryna skip some pages1");
@@ -118,6 +125,14 @@ exports.create = function(req, res){
     console.log(Object.keys(req.body.category).length);
     if(Object.keys(req.body.category).length > 1){
       console.log("hey its two");
+    }else if(Object.keys(req.body.category).length === 0){
+      console.log("hey its a school post");
+    }else{
+      console.log("something's wrong man");
+      res.json({
+        success: false,
+        message: "Invalid parameters"
+      });
     }
     var post = new Post({
       title: req.body.title,

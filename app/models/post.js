@@ -16,7 +16,8 @@ var postSchema  = new Schema ({
 	comment_id:[{type:Schema.ObjectId, ref:'Comment'}],
 	image_id:[{type:Schema.ObjectId, ref:'Image'}],
   author: {type:String, required:true},
-  category: [{type:String, required:true}]
+  category: [{type:String, required:true}],
+  school: [{type:String, required:true}]
 });
 
 
