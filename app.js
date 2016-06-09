@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname +'/public')));
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 
-mongoose.connect("mongoURL");
+mongoose.connect("mongodb://outpark:5769a@ds051873.mongolab.com:51873/rockandcode");
 var db = mongoose.connection;
 db.once("open", function(){
   console.log("DB running");
