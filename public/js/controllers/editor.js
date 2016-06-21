@@ -31,7 +31,7 @@ $scope.submit = function() {
       data = {
         "title" : $scope.title,
         "content" : $scope.body,
-        "school": $scope.school
+        "category": $scope.school
       };
     }else{
       Notification.error("카테고리를 입력해주세요.");

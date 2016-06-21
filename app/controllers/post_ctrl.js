@@ -19,7 +19,7 @@ exports.find = function(req, res) {
   }else if(req.path.indexOf("/api/board") > -1){
     console.log("category search: " + req.params.category);
     console.log("its school" + req.params.school);
-    if(Object.keys(req.body.category).length >= 1){
+    if(Object.keys(req.params.category).length >= 1){
       conditions = {"category":req.params.category};
       isCategory = true;
     }else{
@@ -119,19 +119,17 @@ exports.create = function(req, res){
   if(!req.body.title || !req.body.content){
     res.json({
       success: false,
-      message: "Invalid parameters"
+      message: "Invalid parameters1"
     });
   }else {
     console.log(Object.keys(req.body.category).length);
     if(Object.keys(req.body.category).length > 1){
       console.log("hey its two");
     }else if(Object.keys(req.body.category).length === 0){
-      console.log("hey its a school post");
-    }else{
-      console.log("something's wrong man");
-      res.json({
+      console.log("no category selected");
+      return res.json({
         success: false,
-        message: "Invalid parameters"
+        message: "Invalid parameters2"
       });
     }
     var post = new Post({
@@ -141,10 +139,13 @@ exports.create = function(req, res){
       author: req.user.username
     });
     Post.create(post, function(err, post) {
+      console.log(post);
       if (err) {
+        console.log(err);
         return res.json({success:false, message:err});
       } else {
-        res.json({success:true, data:post});
+        console.log("sending success message");
+        return res.json({success:true, data:post});
       }
     });
   }
