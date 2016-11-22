@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,7 +6,7 @@ var jwt = require('jsonwebtoken');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var async = require('async');
-
+var config = require('config.js');
 var http = require('http');
 
 //var User = require('./models/User');
@@ -19,8 +18,8 @@ var port = process.env.PORT || 8080;
 app.use(express.static(path.join(__dirname +'/public')));
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
-
-mongoose.connect("mongodb://outpark:5769a@ds051873.mongolab.com:51873/rockandcode");
+var mongoURL = config.database;
+mongoose.connect(mongoURL);
 var db = mongoose.connection;
 db.once("open", function(){
   console.log("DB running");
