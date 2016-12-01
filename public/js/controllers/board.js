@@ -93,6 +93,19 @@ function($scope, $http, $routeParams, Notification) {
         $location.path("/board");
       }else{
         Notification.info("You are now subscribed to the school.");
+
+        $http.get("/api/board/"+$routeParams.category).success(function(res) {
+          $scope.posts = res.data;
+          // $scope.up_count = res.data.ups;
+          currentPage = res.currentPage;
+          if(res.data[0] === undefined){
+            Notification.info("게시물이 존재하지 않습니다.");
+          }else{
+            index = res.data[0]._id;
+          }
+          $scope.pages = pages(Number(res.currentPage), Number(res.totalPage));
+        });
+
       }
     });
   };
