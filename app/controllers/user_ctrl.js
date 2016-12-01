@@ -164,3 +164,35 @@ exports.ensureAuthorized = function (req, res, next) {
         res.send(403);
     }
 };
+
+exports.subscribeSchool = function (req, res) {
+  if(!req.params.school || !req.body.username){
+    return res.json({
+      success:false,
+      message:"Invalid parameters"
+    });
+  }
+  async.waterfall([
+    function(callback){
+        User.update({username:req.body.username},{$push:{subscription:req.params.school}}, function(err, user){
+          if(err){
+            callback("Failed to update user with the username");
+          }else{
+            callback(null, user);
+          }
+        });
+      }
+  ], function(err, user) {
+      if(err){
+        return res.json({
+          success:false,
+          message:"Failed to subscribe" + err
+        });
+      }else {
+        return res.json({
+          success: true,
+          data: user
+        });
+      }
+  });
+};
