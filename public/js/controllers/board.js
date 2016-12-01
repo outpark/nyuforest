@@ -72,6 +72,31 @@ app.controller('categoryCtrl', ["$scope", "$http", "$routeParams", "Notification
 function($scope, $http, $routeParams, Notification) {
   var currentPage;
   var index;
+
+  // I am neglecting the case of confliction b/w the category and school
+  // My mistake for using category and school interchangebly. It's really confusing.
+
+  // Identify the current user.
+  var currentUser = $rootScope.auth;
+
+  // this shuold validate of the user is subscribed to the school
+  if(!currentUser.subscription.includes($routeParams.category)){
+    Notification.error("You are not subscribed to this school. Please subscribe");
+    return;
+  }
+
+  // this is the method for the user to subscribe to school. An AJAX request to API.
+  $scope.subscribeToSchool = function(school) {
+    $http.post('/api/board/subscribe/' + $routeParams.category + '/'+currentUser.username).success(function(res) {
+      if(res.data[0] === false){
+        Notification.error("You have failed to subscribe to this school");
+        $location.path("/board");
+      }else{
+        Notification.info("You are now subscribed to the school.");
+      }
+    });
+  };
+
   $http.get("/api/board/"+$routeParams.category).success(function(res) {
     $scope.posts = res.data;
     // $scope.up_count = res.data.ups;
@@ -83,6 +108,7 @@ function($scope, $http, $routeParams, Notification) {
     }
     $scope.pages = pages(Number(res.currentPage), Number(res.totalPage));
   });
+
   $scope.paging = function(page){
     if(typeof page === "number"){
       var skip = page - currentPage;
@@ -99,4 +125,6 @@ function($scope, $http, $routeParams, Notification) {
 
 
 }]);
+
+
 })();

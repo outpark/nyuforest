@@ -166,7 +166,7 @@ exports.ensureAuthorized = function (req, res, next) {
 };
 
 exports.subscribeSchool = function (req, res) {
-  if(!req.params.school || !req.body.username){
+  if(!req.params.school || !req.params.username){
     return res.json({
       success:false,
       message:"Invalid parameters"
@@ -174,7 +174,7 @@ exports.subscribeSchool = function (req, res) {
   }
   async.waterfall([
     function(callback){
-        User.update({username:req.body.username},{$push:{subscription:req.params.school}}, function(err, user){
+        User.update({username:req.params.username},{$push:{subscription:req.params.school}}, function(err, user){
           if(err){
             callback("Failed to update user with the username");
           }else{

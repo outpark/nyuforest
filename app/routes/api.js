@@ -27,6 +27,8 @@ exports.initApp = function(app){
   // app.route('/api/users/:user_id')
   // .get(ensureAuthorized, user_ctrl.details);
 
+
+
   app.route('/api/posts')
   .get(post_ctrl.find)
   .post(ensureAuthorized, post_ctrl.create);
@@ -36,6 +38,10 @@ exports.initApp = function(app){
 
   app.route('/api/board/:category')
   .get(post_ctrl.find);
+
+  // this is the route handler for the user subscription
+  app.route('/api/board/subscribe/:school/:username')
+  .post(user_ctrl.subscribeSchool);
 
   app.route('/api/board/:category/:current_id/:next_page')
   .get(post_ctrl.find);

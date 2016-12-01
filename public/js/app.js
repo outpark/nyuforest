@@ -41,6 +41,9 @@
       templateUrl: '../views/partials/board.html',
       controller: 'categoryCtrl'
     }).
+    when('/board/subscribe/:school', {
+
+    });
     when('/about', {
       templateUrl: '../views/partials/about.html'
     }).

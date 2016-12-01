@@ -12,6 +12,7 @@ var app = angular.module('forest');
             $rootScope.auth={
               username:res.data.data.username,
               email:res.data.data.email,
+              subscription:res.data.data.subscription,
               token:res.data.data.token
             };
           } else {
